@@ -17,8 +17,6 @@ export const StickyScroll = ({ content }: { content: ContentType[] }) => {
     offset: ["start start", "end end"],
   });
 
-  const cardLength = 1 / content.length;
-
   useEffect(() => {
     const handleScroll = () => {
       if (!containerRef.current) return;
@@ -43,15 +41,24 @@ export const StickyScroll = ({ content }: { content: ContentType[] }) => {
             <motion.div
               key={item.title}
               className="absolute top-0 left-0 w-full h-full flex items-center justify-center"
-              initial={{ opacity: 0, scale: 0.8 }}
+              initial={{ opacity: 0, y: "50%" }}
               animate={{
-                opacity: activeCard === index ? 1 : 0,
-                scale: activeCard === index ? 1 : 0.8,
-                transition: { duration: 0.5 },
+                opacity: index === activeCard ? 1 : 0.3,
+                y: `${(index - activeCard) * 60}%`,
               }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
             >
-              <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <div
+                  className={`absolute inset-0 ${
+                    index < activeCard
+                      ? "bg-gradient-to-b from-background-light dark:from-background-dark to-transparent"
+                      : index > activeCard
+                      ? "bg-gradient-to-t from-background-light dark:from-background-dark to-transparent"
+                      : ""
+                  }`}
+                ></div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center relative z-10">
                   <div className="space-y-4">
                     <h3 className="text-2xl font-bold">{item.title}</h3>
                     <p className="text-sm text-gray-500">{item.date}</p>

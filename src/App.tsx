@@ -154,6 +154,51 @@ const App = () => {
     };
   }, []);
 
+  const [isHovering, setIsHovering] = useState(false);
+  const [hoverText, setHoverText] = useState("");
+  const [isOverInteractable, setIsOverInteractable] = useState(false);
+
+  useEffect(() => {
+    const handleMouseEnter = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.matches('a, button, [role="button"]')) {
+        setIsOverInteractable(true);
+      }
+    };
+
+    const handleMouseLeave = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.matches('a, button, [role="button"]')) {
+        setIsOverInteractable(false);
+      }
+    };
+
+    document.addEventListener("mouseenter", handleMouseEnter, true);
+    document.addEventListener("mouseleave", handleMouseLeave, true);
+
+    return () => {
+      document.removeEventListener("mouseenter", handleMouseEnter, true);
+      document.removeEventListener("mouseleave", handleMouseLeave, true);
+    };
+  }, []);
+
+  // Update this function to create a more compact circular text
+  const createCircularText = (text: string) => {
+    return text.split("").map((char, i) => (
+      <span
+        key={i}
+        style={{
+          transform: `rotate(${i * (360 / text.length)}deg) translateY(-0px)`, // Adjusted translateY
+          color: isDark || isHoveringImage ? "white" : "black", // Set text color based on mode
+        }}
+      >
+        {char}
+      </span>
+    ));
+  };
+
+  const [isHoveringImage, setIsHoveringImage] = useState(false);
+
   return (
     <div
       className={`min-h-screen bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-300 cursor-none`}
@@ -252,9 +297,21 @@ const App = () => {
       >
         <motion.img
           src={heroImage}
-          alt="Hero image showcasing development work"
+          alt="AI HACKATHON"
           className="w-full h-auto object-cover rounded-3xl shadow-lg"
           variants={fadeInUpVariants}
+          onMouseEnter={(e) => {
+            setIsHovering(true);
+            setIsHoveringImage(true);
+            if (e.target instanceof HTMLImageElement) {
+              setHoverText(" " + e.target.alt);
+            }
+          }}
+          onMouseLeave={() => {
+            setIsHovering(false);
+            setIsHoveringImage(false);
+            setHoverText("");
+          }}
         />
       </AnimatedSection>
 
@@ -388,24 +445,43 @@ const App = () => {
       </div>
 
       <motion.div
-        className={`custom-cursor ${isDark ? "dark-cursor" : ""}`}
+        className={`custom-cursor ${
+          isDark || isHoveringImage ? "dark-cursor" : ""
+        } ${isHovering ? "hovering" : ""} ${
+          isOverInteractable ? "over-interactable" : ""
+        } ${isHoveringImage ? "image-hover" : ""}`}
         style={{
           left: cursorX,
           top: cursorY,
         }}
         animate={{
-          scale: isPressed ? 0.5 : 1,
+          scale: isPressed ? 0.8 : 1,
           backgroundColor: isPressed
-            ? isDark
+            ? isDark || isHoveringImage
               ? "var(--primary)"
               : "var(--text-light)"
             : "transparent",
-          borderColor: isDark ? "var(--primary)" : "var(--text-light)",
-          borderWidth: "2px",
+          borderColor:
+            isDark || isHoveringImage ? "var(--primary)" : "var(--text-light)",
+          borderWidth: isOverInteractable ? "3px" : isHovering ? "3px" : "2px",
           borderStyle: "solid",
         }}
         transition={{ duration: 0.1 }}
-      />
+      >
+        {isHovering && (
+          <motion.div
+            className={`cursor-text ${isHoveringImage ? "image-hover" : ""}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{
+              color: isDark || isHoveringImage ? "white" : "black", // Set text color based on mode
+            }}
+          >
+            {createCircularText(hoverText)}
+          </motion.div>
+        )}
+      </motion.div>
     </div>
   );
 };

@@ -27,12 +27,49 @@
   transition: all 0.1s ease-out;
 }
 
-.dark-cursor {
+.dark-cursor,
+.image-hover {
   mix-blend-mode: difference;
 }
 
-/* Selected text color */
-::selection {
-  background-color: var(--primary);
-  color: var(--text-light);
+.custom-cursor.hovering,
+.custom-cursor.over-interactable {
+  width: 42px;
+  height: 42px;
+}
+
+.custom-cursor.over-interactable {
+  border-width: 3px !important;
+}
+
+.cursor-text {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  left: -44px;
+  top: -44px;
+  animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cursor-text span {
+  position: absolute;
+  left: 50%;
+  font-size: 0.7rem;
+  transform-origin: 0 60px;
+}
+
+/* Remove default cursor styles for interactive elements */
+button,
+a,
+[role="button"] {
+  cursor: none;
 }

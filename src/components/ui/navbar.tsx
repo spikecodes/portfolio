@@ -28,7 +28,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
             <li key={item.name}>
               <a
                 href={item.href}
-                className="px-4 py-2 rounded-full text-sm font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="px-4 py-2 rounded-full text-sm font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark hover:bg-gray-100 dark:hover:bg-gray-700 cursor-none"
               >
                 {item.name}
               </a>
@@ -42,7 +42,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
             }}
             transition={{ duration: 0.3 }}
           >
-            <button className="bg-primary text-text-light px-4 py-2 rounded-full font-medium text-sm whitespace-nowrap hover:bg-primary-dark transition-colors">
+            <button className="bg-primary text-text-light px-4 py-2 rounded-full font-medium text-sm whitespace-nowrap hover:bg-primary-dark transition-colors cursor-none">
               Contact
             </button>
           </motion.li>

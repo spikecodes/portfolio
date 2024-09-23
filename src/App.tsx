@@ -13,6 +13,7 @@ import { Linkedin, Github, Mail, Palette } from "lucide-react";
 import { StickyScroll } from "./components/ui/sticky-scroll-reveal";
 import heroImage from "./assets/stage.png";
 import profilePhoto from "./assets/profile-photo.jpg";
+import { BackgroundBoxesDemo } from "./components/ui/background-boxes";
 
 const fadeInUpVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -204,7 +205,10 @@ const App = () => {
     >
       <Navbar isScrolled={isScrolled} />
 
-      <div className="absolute inset-0 hero-gradient -z-[0] w-full"></div>
+      <div className="absolute inset-0 hero-gradient -z-[0] w-full">
+        <BackgroundBoxesDemo />
+      </div>
+      {/* <div className="absolute inset-0 -z-[-1] w-full"></div> */}
       <div className="container-narrow relative">
         <div className="-z-[-2] relative">
           <AnimatedSection variants={fadeInDownVariants} className="">

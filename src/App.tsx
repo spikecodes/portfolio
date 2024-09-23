@@ -274,9 +274,28 @@ const App = () => {
           <div className="flex justify-end">
             <motion.button
               variants={fadeInUpVariants}
-              className="btn bg-primary text-text-light hover:bg-primary-dark dark:hover:bg-primary-light transition-colors"
+              className="btn bg-primary text-text-light hover:bg-primary-dark dark:hover:bg-primary-light transition-colors group"
+              whileHover={{ scale: 1.05 }}
             >
-              Get in touch <span className="ml-2">→</span>
+              Get in touch
+              <motion.div
+                className="ml-2 w-8 h-8 rounded-full bg-transparent flex items-center justify-center overflow-hidden group-hover:bg-white"
+                animate={{ rotate: 0 }}
+                whileHover={{ rotate: -45 }}
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  className="w-5 h-5 text-text-light group-hover:text-text-light"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </motion.div>
             </motion.button>
           </div>
         </AnimatedSection>

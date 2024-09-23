@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react";
-import { motion, useInView } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { Navbar } from "./components/ui/navbar";
 import { ThemeToggle } from "./components/ui/theme-toggle";
 import { Linkedin, Github, Mail, Palette } from "lucide-react";
 import { StickyScroll } from "./components/ui/sticky-scroll-reveal";
-import heroImage from "./assets/libreddit.png";
+import heroImage from "./assets/stage.png";
 import profilePhoto from "./assets/profile-photo.jpg";
-import { useRef } from "react";
 
 const fadeInUpVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -55,7 +54,7 @@ const App = () => {
       description:
         "Engineered a web page search engine in Python, implementing PageRank and cosine similarity for ranking. The project involved implementing zlib compression, which reduced index storage by 60% while maintaining search precision. A Streamlit web interface was created, enabling query response times of less than 2 seconds for multi-word searches, showcasing the efficiency and practicality of the search engine.",
       content: (
-        <div className="w-full h-full bg-gradient-to-br from-cyan-500 to-emerald-500" />
+        <div className="w-full h-full bg-gradient-to-br from-primary to-primary-dark" />
       ),
     },
     {
@@ -64,7 +63,7 @@ const App = () => {
       description:
         "Developed a real-time stock trading simulator utilizing React with TypeScript for the frontend and Node.js/Express for the backend. The project included constructing an OpenAPI 3.0-compliant API with JWT authentication to interface with MongoDB and third-party APIs. AWS services were leveraged to host the backend (EC2, CloudFormation, Cloudfront) and deploy the frontend on AWS Amplify, demonstrating proficiency in full-stack development and cloud deployment.",
       content: (
-        <div className="w-full h-full bg-gradient-to-br from-pink-500 to-indigo-500" />
+        <div className="w-full h-full bg-gradient-to-br from-primary to-gray" />
       ),
     },
     {
@@ -73,7 +72,7 @@ const App = () => {
       description:
         "Created an internal CRUD tool for Culver City Scholarship Fund using Python, JavaScript, and PostgreSQL. The system allows for database management, AI data analysis, scoped user authentication, and form automation pipelines. This user-friendly system serves over 250 applicants, resulting in savings of $8000 per year and 40 hours for each cohort, showcasing the project's significant impact on efficiency and cost-saving.",
       content: (
-        <div className="w-full h-full bg-gradient-to-br from-orange-500 to-yellow-500" />
+        <div className="w-full h-full bg-gradient-to-br from-gray to-primary" />
       ),
     },
     {
@@ -82,7 +81,7 @@ const App = () => {
       description:
         "Developed a full-stack web application using Rust, providing speedy and private Reddit access to 4,000,000 users per month. The project involved creating a custom HTTP2 client/server, which provided users with a 'Time to Interactive' of 2.8 seconds, significantly faster than Reddit's 12.4 seconds. A project network of over 100 Libreddit instances hosted by volunteers worldwide was formed, demonstrating the project's scalability and community impact.",
       content: (
-        <div className="w-full h-full bg-gradient-to-br from-purple-500 to-red-500" />
+        <div className="w-full h-full bg-gradient-to-br from-primary-dark to-primary" />
       ),
     },
   ];
@@ -99,44 +98,63 @@ const App = () => {
 
   const toggleTheme = () => setIsDark(!isDark);
 
+  const [isScrolled, setIsScrolled] = useState(false);
+  const headerRef = useRef(null);
+  const { scrollY } = useScroll();
+
+  useEffect(() => {
+    return scrollY.onChange((latest) => {
+      if (headerRef.current) {
+        const headerHeight = (headerRef.current as HTMLElement).offsetHeight;
+        setIsScrolled(latest > headerHeight);
+      }
+    });
+  }, [scrollY]);
+
+  const navbarWidth = useTransform(
+    scrollY,
+    [0, 100],
+    ["calc(100% - 120px)", "100%"]
+  );
+
   return (
     <div
       className={`min-h-screen bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-300`}
     >
-      <AnimatedSection
-        variants={fadeInDownVariants}
-        className="mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 max-w-7xl"
-      >
-        <div className="flex justify-between items-center py-4">
-          <div className="flex items-center">
-            <img
-              src={profilePhoto}
-              alt="Spike O'Carroll"
-              className="w-12 h-12 rounded-full mr-3"
-            />
-            <span className="font-semibold text-lg">Spike O'Carroll</span>
-          </div>
-          <div className="flex items-center">
-            <Navbar />
+      <Navbar isScrolled={isScrolled} />
+
+      <div className="container-narrow">
+        <AnimatedSection variants={fadeInDownVariants} className="">
+          <div
+            ref={headerRef}
+            className="flex justify-between items-center py-4"
+          >
+            <div className="flex items-center">
+              <img
+                src={profilePhoto}
+                alt="Spike O'Carroll"
+                className="w-14 h-14 rounded-full mr-3"
+              />
+              <span className="font-semibold text-xl">Spike O'Carroll</span>
+            </div>
             <ThemeToggle isDark={isDark} toggleTheme={toggleTheme} />
           </div>
-        </div>
-      </AnimatedSection>
+        </AnimatedSection>
 
-      <div className="mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 max-w-7xl">
         <AnimatedSection
           variants={fadeInUpVariants}
           className="pt-24 pb-16 min-h-[70vh] flex flex-col justify-center"
         >
           <motion.h1
             variants={fadeInUpVariants}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 font-display"
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 font-display"
           >
-            Spike O'Carroll
+            Developer, designer and
+            <br /> aspiring entrepreneur
           </motion.h1>
           <motion.p
             variants={fadeInUpVariants}
-            className="text-lg sm:text-xl lg:text-2xl mb-6 font-sans"
+            className="text-xl sm:text-2xl lg:text-3xl mb-6 font-sans"
           >
             Full Stack Developer | UCI Computer Science Student
           </motion.p>
@@ -148,22 +166,22 @@ const App = () => {
               {
                 href: "mailto:career@spike.codes",
                 icon: Mail,
-                label: "Email",
+                label: "",
               },
               {
                 href: "https://linkedin.com/in/spike-ocarroll",
                 icon: Linkedin,
-                label: "LinkedIn",
+                label: "",
               },
               {
                 href: "https://github.com/spikecodes",
                 icon: Github,
-                label: "GitHub",
+                label: "",
               },
               {
                 href: "https://behance.net/yourusername",
                 icon: Palette,
-                label: "Behance",
+                label: "",
               },
             ].map((social, index) => (
               <motion.a
@@ -180,32 +198,40 @@ const App = () => {
               </motion.a>
             ))}
           </motion.div>
-        </AnimatedSection>
-
-        <AnimatedSection
-          variants={fadeInUpVariants}
-          className="relative w-full overflow-hidden mb-16"
-        >
-          <div className="max-w-[95vw] mx-auto">
-            <motion.img
-              src={heroImage}
-              alt="Hero image showcasing development work"
-              className="w-full h-auto object-cover rounded-3xl shadow-lg"
+          <div className="flex justify-end">
+            <motion.button
               variants={fadeInUpVariants}
-            />
+              className="bg-primary text-text-light px-6 py-3 rounded-md font-medium text-lg inline-flex items-center hover:bg-primary-dark transition-colors"
+            >
+              Get in touch <span className="ml-2">→</span>
+            </motion.button>
           </div>
         </AnimatedSection>
+      </div>
 
+      <AnimatedSection
+        variants={fadeInUpVariants}
+        className="container-wide relative w-full overflow-hidden mb-16"
+      >
+        <motion.img
+          src={heroImage}
+          alt="Hero image showcasing development work"
+          className="w-full h-auto object-cover rounded-3xl shadow-lg"
+          variants={fadeInUpVariants}
+        />
+      </AnimatedSection>
+
+      <div className="container-narrow">
         <AnimatedSection variants={fadeInUpVariants} className="py-12 sm:py-16">
           <motion.h2
             variants={fadeInUpVariants}
-            className="text-xl sm:text-2xl font-semibold mb-4"
+            className="text-2xl sm:text-3xl font-semibold mb-4"
           >
             About Me
           </motion.h2>
           <motion.p
             variants={fadeInUpVariants}
-            className="max-w-2xl text-sm sm:text-base"
+            className="max-w-2xl text-base sm:text-lg"
           >
             I'm a Computer Science student at UC Irvine with a passion for
             full-stack development and AI. Currently, I'm working as a Full
@@ -215,7 +241,7 @@ const App = () => {
         </AnimatedSection>
 
         <section id="projects" className="w-full py-12 sm:py-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8">
+          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-8">
             Projects
           </h2>
           <StickyScroll content={projects} />
@@ -224,7 +250,7 @@ const App = () => {
         <AnimatedSection variants={fadeInUpVariants} className="py-12 sm:py-16">
           <motion.h2
             variants={fadeInUpVariants}
-            className="text-xl sm:text-2xl font-semibold mb-4"
+            className="text-2xl sm:text-3xl font-semibold mb-4"
           >
             Experience
           </motion.h2>
@@ -268,7 +294,7 @@ const App = () => {
         <AnimatedSection variants={fadeInUpVariants} className="py-12 sm:py-16">
           <motion.h2
             variants={fadeInUpVariants}
-            className="text-xl sm:text-2xl font-semibold mb-4"
+            className="text-2xl sm:text-3xl font-semibold mb-4"
           >
             Skills
           </motion.h2>
@@ -291,7 +317,7 @@ const App = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
-                className="bg-primary-dark text-white px-2 py-1 rounded-full text-xs sm:text-sm"
+                className="bg-primary text-text-light px-3 py-1.5 rounded-full text-sm sm:text-base"
               >
                 {skill}
               </motion.span>

@@ -12,27 +12,38 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#6366f1',
-          dark: '#4f46e5',
+          DEFAULT: "#e2f505", // Bright lime green
+          dark: "#c5d604", // Slightly darker shade for hover effects
         },
         background: {
-          light: '#f3f4f6',
-          dark: '#111827',
+          light: "#ffffff", // White
+          dark: "#000000", // Black
         },
         text: {
-          light: '#1f2937',
-          dark: '#f9fafb',
+          light: "#000000", // Black
+          dark: "#ffffff", // White
+        },
+        gray: {
+          DEFAULT: "#aeaeae", // Medium gray
         },
       },
       fontFamily: {
-        sans: ['Space Grotesk', 'sans-serif'],
-        display: ['Clash Display', 'sans-serif'],
+        sans: ["DM Sans", "sans-serif"],
+        display: ["DM Sans", "sans-serif"],
+      },
+      fontSize: {
+        base: "1.125rem", // Slightly larger base font size
+        lg: "1.25rem",
+        xl: "1.375rem",
+        "2xl": "1.5rem",
+        "3xl": "1.875rem",
+        "4xl": "2.25rem",
+        "5xl": "3rem",
+        "6xl": "3.75rem",
       },
     },
   },
-  plugins: [
-    addVariablesForColors,
-  ],
+  plugins: [addVariablesForColors],
 };
 
 // This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).

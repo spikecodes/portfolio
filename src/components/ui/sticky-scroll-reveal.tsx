@@ -1,6 +1,13 @@
 "use client";
 import React, { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
+
+interface ContentType {
+  title: string;
+  date: string;
+  description: string;
+  content: React.ReactNode;
+}
 
 export const StickyScroll = ({ content }: { content: ContentType[] }) => {
   const [activeCard, setActiveCard] = useState(0);

@@ -16,7 +16,7 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={toggleTheme}
-      className="fixed top-4 right-4 z-50 bg-primary p-2 rounded-full text-white"
+      className="fixed top-4 right-4 z-50 bg-primary p-2 rounded-full text-text-light hover:bg-primary-dark transition-colors"
     >
       {isDark ? <Sun size={20} /> : <Moon size={20} />}
     </motion.button>

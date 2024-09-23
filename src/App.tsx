@@ -1,5 +1,12 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useInView,
+  useScroll,
+  useTransform,
+  useMotionValue,
+  useSpring,
+} from "framer-motion";
 import { Navbar } from "./components/ui/navbar";
 import { ThemeToggle } from "./components/ui/theme-toggle";
 import { Linkedin, Github, Mail, Palette } from "lucide-react";
@@ -117,9 +124,39 @@ const App = () => {
     ["calc(100% - 120px)", "100%"]
   );
 
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+  const [isPressed, setIsPressed] = useState(false);
+
+  useEffect(() => {
+    const moveCursor = (e: MouseEvent) => {
+      cursorX.set(e.clientX - 16);
+      cursorY.set(e.clientY - 16);
+    };
+
+    window.addEventListener("mousemove", moveCursor);
+
+    return () => {
+      window.removeEventListener("mousemove", moveCursor);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleMouseDown = () => setIsPressed(true);
+    const handleMouseUp = () => setIsPressed(false);
+
+    window.addEventListener("mousedown", handleMouseDown);
+    window.addEventListener("mouseup", handleMouseUp);
+
+    return () => {
+      window.removeEventListener("mousedown", handleMouseDown);
+      window.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, []);
+
   return (
     <div
-      className={`min-h-screen bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-300`}
+      className={`min-h-screen bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-300 cursor-none`}
     >
       <Navbar isScrolled={isScrolled} />
 
@@ -189,7 +226,7 @@ const App = () => {
                 href={social.href}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="text-primary hover:text-primary-dark transition-colors flex items-center gap-1"
+                className="text-primary hover:text-primary-dark dark:hover:text-primary-light transition-colors flex items-center gap-1"
               >
                 <social.icon size={20} className="sm:w-6 sm:h-6" />
                 <span className="text-sm sm:text-base font-medium">
@@ -201,7 +238,7 @@ const App = () => {
           <div className="flex justify-end">
             <motion.button
               variants={fadeInUpVariants}
-              className="bg-primary text-text-light px-6 py-3 rounded-md font-medium text-lg inline-flex items-center hover:bg-primary-dark transition-colors"
+              className="bg-primary text-text-light px-6 py-3 rounded-md font-medium text-lg inline-flex items-center hover:bg-primary-dark dark:hover:bg-primary-light transition-colors"
             >
               Get in touch <span className="ml-2">→</span>
             </motion.button>
@@ -349,6 +386,26 @@ const App = () => {
           </motion.div>
         </AnimatedSection>
       </div>
+
+      <motion.div
+        className={`custom-cursor ${isDark ? "dark-cursor" : ""}`}
+        style={{
+          left: cursorX,
+          top: cursorY,
+        }}
+        animate={{
+          scale: isPressed ? 0.5 : 1,
+          backgroundColor: isPressed
+            ? isDark
+              ? "var(--primary)"
+              : "var(--text-light)"
+            : "transparent",
+          borderColor: isDark ? "var(--primary)" : "var(--text-light)",
+          borderWidth: "2px",
+          borderStyle: "solid",
+        }}
+        transition={{ duration: 0.1 }}
+      />
     </div>
   );
 };

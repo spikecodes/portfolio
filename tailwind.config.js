@@ -13,6 +13,7 @@ module.exports = {
       colors: {
         primary: {
           DEFAULT: "#e2f505", // Bright lime green
+          light: "#edf754", // Lighter shade for hover effects
           dark: "#c5d604", // Slightly darker shade for hover effects
         },
         background: {
@@ -24,7 +25,15 @@ module.exports = {
           dark: "#ffffff", // White
         },
         gray: {
-          DEFAULT: "#aeaeae", // Medium gray
+          100: "#f5f5f5",
+          200: "#eeeeee",
+          300: "#e0e0e0",
+          400: "#bdbdbd",
+          500: "#9e9e9e",
+          600: "#757575",
+          700: "#616161",
+          800: "#424242",
+          900: "#212121",
         },
       },
       fontFamily: {

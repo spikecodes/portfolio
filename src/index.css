@@ -11,3 +11,28 @@
     @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-[95vw] xl:max-w-[80vw];
   }
 }
+
+/* Custom cursor styles */
+.cursor-none {
+  cursor: none;
+}
+
+.custom-cursor {
+  pointer-events: none;
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  z-index: 9999;
+  transition: all 0.1s ease-out;
+}
+
+.dark-cursor {
+  mix-blend-mode: difference;
+}
+
+/* Selected text color */
+::selection {
+  background-color: var(--primary);
+  color: var(--text-light);
+}

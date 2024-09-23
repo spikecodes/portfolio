@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Navbar } from "./components/ui/navbar";
 import { ThemeToggle } from "./components/ui/theme-toggle";
 import { Linkedin, Github, Mail, Palette } from "lucide-react";
 import { StickyScroll } from "./components/ui/sticky-scroll-reveal";
 import heroImage from "./assets/libreddit.png"; // Make sure to add this image to your assets folder
+import profilePhoto from "./assets/profile-photo.jpg"; // Add this import
 
 const App = () => {
   const projects = [
@@ -62,8 +63,22 @@ const App = () => {
     <div
       className={`min-h-screen bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-300`}
     >
-      <Navbar />
-      <ThemeToggle isDark={isDark} toggleTheme={toggleTheme} />
+      <div className="mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 max-w-7xl">
+        <div className="flex justify-between items-center py-4">
+          <div className="flex items-center">
+            <img
+              src={profilePhoto}
+              alt="Spike O'Carroll"
+              className="w-12 h-12 rounded-full mr-3"
+            />
+            <span className="font-semibold text-lg">Spike O'Carroll</span>
+          </div>
+          <div className="flex items-center">
+            <Navbar />
+            <ThemeToggle isDark={isDark} toggleTheme={toggleTheme} />
+          </div>
+        </div>
+      </div>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

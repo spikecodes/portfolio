@@ -22,13 +22,17 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
       transition={{ duration: 0.5 }}
       style={{ transform: "translateX(-50%)" }}
     >
-      <div className="bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-80 backdrop-blur-md rounded-full shadow-md px-6 py-3">
+      <div
+        className={`bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-80 backdrop-blur-md rounded-full ${
+          isScrolled ? "shadow-md" : ""
+        } px-6 py-3`}
+      >
         <ul className="flex items-center justify-center space-x-2">
           {navItems.map((item) => (
             <li key={item.name}>
               <a
                 href={item.href}
-                className="px-4 py-2 rounded-full text-sm font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark hover:bg-gray-100 dark:hover:bg-gray-700 cursor-none"
+                className="px-4 py-2 rounded-full text-md font-medium transition-colors text-gray-900 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 cursor-none"
               >
                 {item.name}
               </a>
@@ -42,7 +46,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
             }}
             transition={{ duration: 0.3 }}
           >
-            <button className="bg-primary text-text-light px-4 py-2 rounded-full font-medium text-sm whitespace-nowrap hover:bg-primary-dark transition-colors cursor-none">
+            <button className="bg-primary text-text-light px-4 py-2 rounded-full font-semibold text-sm whitespace-nowrap hover:bg-primary-dark transition-colors cursor-none">
               Contact
             </button>
           </motion.li>

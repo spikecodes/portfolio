@@ -4,7 +4,7 @@
 
 @layer components {
   .container-narrow {
-    @apply mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 max-w-7xl;
+    @apply mx-auto px-4 sm:px-6 lg:px-10 xl:px-20 max-w-7xl;
   }
 
   .container-wide {

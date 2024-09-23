@@ -208,16 +208,16 @@ const App = () => {
         <AnimatedSection variants={fadeInDownVariants} className="">
           <div
             ref={headerRef}
-            className="flex justify-between items-center py-4"
+            className="flex justify-between items-center py-6"
           >
             <div className="flex items-center">
               <img
                 src={profilePhoto}
                 alt="Spike O'Carroll"
-                className="w-14 h-14 rounded-full mr-3"
+                className="w-12 h-12 rounded-full mr-5"
                 draggable="false"
               />
-              <span className="font-semibold text-xl">Spike O'Carroll</span>
+              <span className="font-medium text-xl">Spike O'Carroll</span>
             </div>
             <ThemeToggle isDark={isDark} toggleTheme={toggleTheme} />
           </div>
@@ -234,12 +234,6 @@ const App = () => {
             Developer, designer and
             <br /> aspiring entrepreneur
           </motion.h1>
-          <motion.p
-            variants={fadeInUpVariants}
-            className="text-xl sm:text-2xl lg:text-3xl mb-6 font-sans"
-          >
-            Full Stack Developer | UCI Computer Science Student
-          </motion.p>
           <motion.div
             variants={fadeInUpVariants}
             className="flex flex-wrap gap-4 mb-12"
@@ -290,7 +284,7 @@ const App = () => {
 
       <AnimatedSection
         variants={fadeInUpVariants}
-        className="container-wide relative w-full overflow-hidden mb-16"
+        className="container-wide relative w-full overflow-hidden"
       >
         <motion.img
           src={heroImage}
@@ -323,7 +317,7 @@ const App = () => {
           </motion.h2>
           <motion.p
             variants={fadeInUpVariants}
-            className="max-w-2xl text-base sm:text-lg"
+            className="text-base sm:text-lg"
           >
             I'm a Computer Science student at UC Irvine with a passion for
             full-stack development and AI. Currently, I'm working as a Full

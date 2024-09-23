@@ -204,101 +204,104 @@ const App = () => {
     >
       <Navbar isScrolled={isScrolled} />
 
-      <div className="container-narrow">
-        <AnimatedSection variants={fadeInDownVariants} className="">
-          <div
-            ref={headerRef}
-            className="flex justify-between items-center py-6"
-          >
-            <div className="flex items-center">
-              <img
-                src={profilePhoto}
-                alt="Spike O'Carroll"
-                className="w-12 h-12 rounded-full mr-5"
-                draggable="false"
-              />
-              <span className="font-medium text-xl">Spike O'Carroll</span>
-            </div>
-            <ThemeToggle isDark={isDark} toggleTheme={toggleTheme} />
-          </div>
-        </AnimatedSection>
-
-        <AnimatedSection
-          variants={fadeInUpVariants}
-          className="pt-24 pb-16 min-h-[70vh] flex flex-col justify-center"
-        >
-          <motion.h1
-            variants={fadeInUpVariants}
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 font-display"
-          >
-            Developer, designer and
-            <br /> aspiring entrepreneur
-          </motion.h1>
-          <motion.div
-            variants={fadeInUpVariants}
-            className="flex flex-wrap gap-4 mb-12"
-          >
-            {[
-              {
-                href: "mailto:career@spike.codes",
-                icon: Mail,
-                label: "",
-              },
-              {
-                href: "https://linkedin.com/in/spike-ocarroll",
-                icon: Linkedin,
-                label: "",
-              },
-              {
-                href: "https://github.com/spikecodes",
-                icon: Github,
-                label: "",
-              },
-              {
-                href: "https://behance.net/yourusername",
-                icon: Palette,
-                label: "",
-              },
-            ].map((social, index) => (
-              <motion.a
-                key={index}
-                href={social.href}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="social-icon hover:bg-primary/10 dark:hover:bg-primary/20"
-              >
-                <social.icon size={24} className="sm:w-6 sm:h-6" />
-              </motion.a>
-            ))}
-          </motion.div>
-          <div className="flex justify-end">
-            <motion.button
-              variants={fadeInUpVariants}
-              className="btn bg-primary text-text-light hover:bg-primary-dark dark:hover:bg-primary-light transition-colors group"
-              whileHover={{ scale: 1.05 }}
+      <div className="absolute inset-0 hero-gradient -z-[0] w-full"></div>
+      <div className="container-narrow relative">
+        <div className="-z-[-2] relative">
+          <AnimatedSection variants={fadeInDownVariants} className="">
+            <div
+              ref={headerRef}
+              className="flex justify-between items-center py-6"
             >
-              Get in touch
-              <motion.div
-                className="ml-2 w-8 h-8 rounded-full bg-transparent flex items-center justify-center overflow-hidden group-hover:bg-white"
-                animate={{ rotate: 0 }}
-                whileHover={{ rotate: -45 }}
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  className="w-5 h-5 text-text-light group-hover:text-text-light"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+              <div className="flex items-center">
+                <img
+                  src={profilePhoto}
+                  alt="Spike O'Carroll"
+                  className="w-12 h-12 rounded-full mr-5"
+                  draggable="false"
+                />
+                <span className="font-medium text-xl">Spike O'Carroll</span>
+              </div>
+              <ThemeToggle isDark={isDark} toggleTheme={toggleTheme} />
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection
+            variants={fadeInUpVariants}
+            className="pt-24 pb-16 min-h-[70vh] flex flex-col justify-center"
+          >
+            <motion.h1
+              variants={fadeInUpVariants}
+              className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 font-display"
+            >
+              Developer, designer and
+              <br /> aspiring entrepreneur
+            </motion.h1>
+            <motion.div
+              variants={fadeInUpVariants}
+              className="flex flex-wrap gap-4 mb-12"
+            >
+              {[
+                {
+                  href: "mailto:career@spike.codes",
+                  icon: Mail,
+                  label: "",
+                },
+                {
+                  href: "https://linkedin.com/in/spike-ocarroll",
+                  icon: Linkedin,
+                  label: "",
+                },
+                {
+                  href: "https://github.com/spikecodes",
+                  icon: Github,
+                  label: "",
+                },
+                {
+                  href: "https://behance.net/yourusername",
+                  icon: Palette,
+                  label: "",
+                },
+              ].map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.href}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="social-icon hover:bg-primary/10 dark:hover:bg-primary/20"
                 >
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </motion.div>
-            </motion.button>
-          </div>
-        </AnimatedSection>
+                  <social.icon size={24} className="sm:w-6 sm:h-6" />
+                </motion.a>
+              ))}
+            </motion.div>
+            <div className="flex justify-end">
+              <motion.button
+                variants={fadeInUpVariants}
+                className="btn bg-primary text-text-light hover:bg-primary-dark dark:hover:bg-primary-light transition-colors group"
+                whileHover={{ scale: 1.05 }}
+              >
+                Get in touch
+                <motion.div
+                  className="ml-2 w-8 h-8 rounded-full bg-transparent flex items-center justify-center overflow-hidden group-hover:bg-white"
+                  animate={{ rotate: 0 }}
+                  whileHover={{ rotate: -45 }}
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="w-5 h-5 text-text-light group-hover:text-text-light"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </motion.div>
+              </motion.button>
+            </div>
+          </AnimatedSection>
+        </div>
       </div>
 
       <AnimatedSection

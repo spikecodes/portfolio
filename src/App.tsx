@@ -188,8 +188,8 @@ const App = () => {
       <span
         key={i}
         style={{
-          transform: `rotate(${i * (360 / text.length)}deg) translateY(-0px)`, // Adjusted translateY
-          color: isDark || isHoveringImage ? "white" : "black", // Set text color based on mode
+          transform: `rotate(${i * (360 / text.length)}deg) translateY(0px)`,
+          color: isDark || isHoveringImage ? "white" : "black",
         }}
       >
         {char}
@@ -216,6 +216,7 @@ const App = () => {
                 src={profilePhoto}
                 alt="Spike O'Carroll"
                 className="w-14 h-14 rounded-full mr-3"
+                draggable="false"
               />
               <span className="font-semibold text-xl">Spike O'Carroll</span>
             </div>
@@ -300,6 +301,7 @@ const App = () => {
           alt="AI HACKATHON"
           className="w-full h-auto object-cover rounded-3xl shadow-lg"
           variants={fadeInUpVariants}
+          draggable="false"
           onMouseEnter={(e) => {
             setIsHovering(true);
             setIsHoveringImage(true);
@@ -475,7 +477,7 @@ const App = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             style={{
-              color: isDark || isHoveringImage ? "white" : "black", // Set text color based on mode
+              color: isDark || isHoveringImage ? "white" : "black",
             }}
           >
             {createCircularText(hoverText)}

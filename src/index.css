@@ -10,6 +10,28 @@
   .container-wide {
     @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-[95vw] xl:max-w-[80vw];
   }
+
+  /* Updated styles for fully rounded buttons */
+  .btn {
+    @apply rounded-full px-6 py-3 font-medium text-lg inline-flex items-center transition-colors;
+  }
+
+  /* Updated styles for social icons */
+  .social-icon {
+    @apply w-12 h-12 rounded-full border border-black/10 dark:border-white/10 flex items-center justify-center transition-colors;
+  }
+
+  .social-icon:active {
+    @apply bg-primary;
+  }
+
+  .social-icon:active svg {
+    @apply text-black dark:text-white;
+  }
+
+  .social-icon svg {
+    @apply text-black dark:text-white;
+  }
 }
 
 /* Custom cursor styles */

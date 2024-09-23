@@ -182,7 +182,6 @@ const App = () => {
     };
   }, []);
 
-  // Update this function to create a more compact circular text
   const createCircularText = (text: string) => {
     return text.split("").map((char, i) => (
       <span
@@ -272,19 +271,16 @@ const App = () => {
                 href={social.href}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="text-primary hover:text-primary-dark dark:hover:text-primary-light transition-colors flex items-center gap-1"
+                className="social-icon hover:bg-primary/10 dark:hover:bg-primary/20"
               >
-                <social.icon size={20} className="sm:w-6 sm:h-6" />
-                <span className="text-sm sm:text-base font-medium">
-                  {social.label}
-                </span>
+                <social.icon size={24} className="sm:w-6 sm:h-6" />
               </motion.a>
             ))}
           </motion.div>
           <div className="flex justify-end">
             <motion.button
               variants={fadeInUpVariants}
-              className="bg-primary text-text-light px-6 py-3 rounded-md font-medium text-lg inline-flex items-center hover:bg-primary-dark dark:hover:bg-primary-light transition-colors"
+              className="btn bg-primary text-text-light hover:bg-primary-dark dark:hover:bg-primary-light transition-colors"
             >
               Get in touch <span className="ml-2">→</span>
             </motion.button>

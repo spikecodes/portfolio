@@ -9,7 +9,7 @@ import {
 } from "framer-motion";
 import { Navbar } from "./components/ui/navbar";
 import { ThemeToggle } from "./components/ui/theme-toggle";
-import { Linkedin, Github, Mail, Palette } from "lucide-react";
+import { Linkedin, Github, Mail, Palette, ExternalLink } from "lucide-react";
 import { StickyScroll } from "./components/ui/sticky-scroll-reveal";
 import heroImage from "./assets/stage.png";
 import profilePhoto from "./assets/profile-photo.jpg";
@@ -312,44 +312,67 @@ const App = () => {
         variants={fadeInUpVariants}
         className="container-wide relative w-full overflow-hidden"
       >
-        <motion.img
-          src={heroImage}
-          alt="AI HACKATHON"
-          className="w-full h-auto object-cover rounded-3xl shadow-lg"
+        <motion.div
+          className="relative rounded-3xl shadow-lg overflow-hidden"
           variants={fadeInUpVariants}
-          draggable="false"
-          onMouseEnter={(e) => {
-            setIsHovering(true);
-            setIsHoveringImage(true);
-            if (e.target instanceof HTMLImageElement) {
-              setHoverText(" " + e.target.alt);
-            }
-          }}
-          onMouseLeave={() => {
-            setIsHovering(false);
-            setIsHoveringImage(false);
-            setHoverText("");
-          }}
-        />
+        >
+          <motion.img
+            src={heroImage}
+            alt="AI HACKATHON"
+            className="w-full h-auto object-cover"
+            draggable="false"
+            onMouseEnter={(e) => {
+              setIsHovering(true);
+              setIsHoveringImage(true);
+              if (e.target instanceof HTMLImageElement) {
+                setHoverText(" " + e.target.alt);
+              }
+            }}
+            onMouseLeave={() => {
+              setIsHovering(false);
+              setIsHoveringImage(false);
+              setHoverText("");
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent from-80% to-black opacity-70 pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+            <h3 className="text-2xl font-semibold mb-1">UC Berkeley AI Hackathon, <span className="font-normal">June 2024</span></h3>
+            <p className="text-lg">
+              Presented our project{' '}
+              <a
+                href="https://devpost.com/software/dispatch-ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center hover:underline text-primary group"
+              >
+                DispatchAI
+                {/* <ExternalLink size={16} className="ml-1 w-0 group-hover:w-auto transition-all duration-300 ease-in-out" /> */}
+              </a>{' '}
+              to an audience of 1000. Our team was awarded 1st Place Grand Prize and {">"}$50,000 in investments and grants.
+            </p>
+          </div>
+        </motion.div>
       </AnimatedSection>
 
       <div className="container-narrow">
-        <AnimatedSection variants={fadeInUpVariants} className="py-12 sm:py-16">
-          <motion.h2
-            variants={fadeInUpVariants}
-            className="text-2xl sm:text-3xl font-semibold mb-4"
-          >
-            About Me
-          </motion.h2>
-          <motion.p
-            variants={fadeInUpVariants}
-            className="text-base sm:text-lg"
-          >
-            I'm a Computer Science student at UC Irvine with a passion for
-            full-stack development and AI. Currently, I'm working as a Full
-            Stack Software Intern at Portal AI, where I've shipped 80+ features
-            to an AI web browser serving 30,000 users/month.
-          </motion.p>
+        <AnimatedSection variants={fadeInUpVariants}>
+          <div className="mt-20 mb-12">
+            <motion.h2
+              variants={fadeInUpVariants}
+              className="text-2xl sm:text-3xl font-semibold mb-4"
+            >
+              About Me
+            </motion.h2>
+            <motion.p
+              variants={fadeInUpVariants}
+              className="text-base sm:text-lg"
+            >
+              I'm a Computer Science student at UC Irvine with a passion for
+              full-stack development and AI. Currently, I'm working as a Full
+              Stack Software Intern at Portal AI, where I've shipped 80+ features
+              to an AI web browser serving 30,000 users/month.
+            </motion.p>
+          </div>
         </AnimatedSection>
 
         <section id="projects" className="w-full py-12 sm:py-16">

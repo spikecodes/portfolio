@@ -12,9 +12,9 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#e2f505", // Bright lime green
-          light: "#edf754", // Lighter shade for hover effects
-          dark: "#c5d604", // Slightly darker shade for hover effects
+          DEFAULT: "#00f5d4", // Neon teal/turquoise
+          light: "#4dffe8", // Lighter shade for hover effects
+          dark: "#00c4a8", // Slightly darker shade for hover effects
         },
         background: {
           light: "#ffffff", // White

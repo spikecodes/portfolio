@@ -11,40 +11,9 @@ import { Navbar } from "./components/ui/navbar";
 import { ThemeToggle } from "./components/ui/theme-toggle";
 import { Linkedin, Github, Mail, Palette, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { StickyScroll } from "./components/ui/sticky-scroll-reveal";
-import dispatchai from "./assets/dispatchai.png";
-import notive from "./assets/notive.jpg";
-import adapted from "./assets/adapted.jpg";
-import sentinel from "./assets/sentinel.jpg";
 import profilePhoto from "./assets/profile-photo.jpg";
 import { BackgroundBoxesDemo } from "./components/ui/background-boxes";
-
-// Define carousel content
-const carouselContent = [
-  {
-    image: dispatchai,
-    alt: "UC Berkeley AI Hackathon",
-    tagline: "UC Berkeley AI Hackathon, <span class='font-normal'>June 2024</span>",
-    description: "Presented our project <a href='https://devpost.com/software/dispatch-ai' target='_blank' rel='noopener noreferrer' class='inline-flex items-center hover:underline text-primary group'>DispatchAI</a> to an audience of 1000. Our team was awarded 1st Place Grand Prize and >$50,000 in investments and grants."
-  },
-  {
-    image: notive,
-    alt: "UCI AI Innovation Challenge",
-    tagline: "UCI AI Innovation Challenge, <span class='font-normal'>January 2024</span>",
-    description: "Won 1st place and $10,000 with our AI-driven project <a href='https://news.uci.edu/2024/02/02/uc-irvines-antrepreneur-center-announces-winners-of-ai-innovation-challenge/' target='_blank' rel='noopener noreferrer' class='inline-flex items-center hover:underline text-primary group'>Notive</a>, revolutionizing the student note-taking experience through innovative AI applications."
-  },
-  {
-    image: adapted,
-    alt: "LAHacks Google Company Challenge",
-    tagline: "LAHacks Google Company Challenge, <span class='font-normal'>April 2024</span>",
-    description: "Secured 1st place (out of 142 teams) and $3000 with our project <a href='https://devpost.com/software/adapted' target='_blank' rel='noopener noreferrer' class='inline-flex items-center hover:underline text-primary group'>AdaptEd</a>, an adaptive, interactive, and personalized AI-powered lecture system."
-  },
-  {
-    image: sentinel,
-    alt: "UCI Stella Zhang New Venture Competition",
-    tagline: "UCI Stella Zhang New Venture Competition, <span class='font-normal'>May 2024</span>",
-    description: "Won 1st place overall ($20,000) and 1st in Business Products and Services Track ($10,000) with our project <a href='#' class='inline-flex items-center hover:underline text-primary group'>Sentinel</a>, the first driver-conscious AI dashcam to detect distraction and fatigue."
-  }
-];
+import Carousel from './components/Carousel';
 
 const fadeInUpVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -229,14 +198,11 @@ const App = () => {
   };
 
   const [isHoveringImage, setIsHoveringImage] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % carouselContent.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + carouselContent.length) % carouselContent.length);
+  const handleCarouselImageHover = (isHovering: boolean, hoverText: string) => {
+    setIsHovering(isHovering);
+    setIsHoveringImage(isHovering);
+    setHoverText(hoverText);
   };
 
   return (
@@ -277,7 +243,7 @@ const App = () => {
               variants={fadeInUpVariants}
               className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 font-display tracking-tight"
             >
-              Developer, <span className="animate-gradient bg-gradient-to-r from-teal-600 to-orange-600 bg-[length:200%_200%] bg-clip-text text-transparent">designer</span> and
+              Developer, <span className="animate-gradient bg-gradient-to-r from-primary via-primary-light to-primary-dark bg-[length:200%_200%] bg-clip-text text-transparent">designer</span> and
               <br /> aspiring entrepreneur
             </motion.h1>
             <motion.div
@@ -301,7 +267,7 @@ const App = () => {
                   label: "",
                 },
                 {
-                  href: "https://behance.net/yourusername",
+                  href: "https://behance.net/spikecodes",
                   icon: Palette,
                   label: "",
                 },
@@ -352,53 +318,7 @@ const App = () => {
         variants={fadeInUpVariants}
         className="container-wide relative w-full overflow-hidden"
       >
-        <motion.div
-          className="relative rounded-3xl shadow-lg overflow-hidden h-[600px]"
-          variants={fadeInUpVariants}
-        >
-          <AnimatePresence mode="wait">
-            <motion.img
-              key={currentSlide}
-              src={carouselContent[currentSlide].image}
-              alt={carouselContent[currentSlide].alt}
-              className="w-full h-full object-cover"
-              draggable="false"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-              onMouseEnter={(e) => {
-                setIsHovering(true);
-                setIsHoveringImage(true);
-                if (e.target instanceof HTMLImageElement) {
-                  setHoverText(" " + carouselContent[currentSlide].alt);
-                }
-              }}
-              onMouseLeave={() => {
-                setIsHovering(false);
-                setIsHoveringImage(false);
-                setHoverText("");
-              }}
-            />
-          </AnimatePresence>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent from-80% to-black opacity-70 pointer-events-none"></div>
-          <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-            <h3 className="text-2xl font-semibold mb-1" dangerouslySetInnerHTML={{ __html: carouselContent[currentSlide].tagline }}></h3>
-            <p className="text-lg" dangerouslySetInnerHTML={{ __html: carouselContent[currentSlide].description }}></p>
-          </div>
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
-          >
-            <ChevronLeft size={24} />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
-          >
-            <ChevronRight size={24} />
-          </button>
-        </motion.div>
+        <Carousel onImageHover={handleCarouselImageHover} />
       </AnimatedSection>
 
       <div className="container-narrow">

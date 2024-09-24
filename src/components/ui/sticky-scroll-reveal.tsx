@@ -6,7 +6,8 @@ interface ContentType {
   title: string;
   date: string;
   description: string;
-  content: React.ReactNode;
+  icon: string;
+  image: string;
 }
 
 export const StickyScroll = ({ content }: { content: ContentType[] }) => {
@@ -58,14 +59,19 @@ export const StickyScroll = ({ content }: { content: ContentType[] }) => {
                       : ""
                   }`}
                 ></div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
                   <div className="space-y-4">
+                    <img src={item.icon} alt={`${item.title} icon`} className="w-12 h-12 rounded-full mb-2" />
                     <h3 className="text-2xl font-bold">{item.title}</h3>
                     <p className="text-sm text-gray-500">{item.date}</p>
                     <p className="text-base">{item.description}</p>
                   </div>
-                  <div className="aspect-square w-full h-full">
-                    {item.content}
+                  <div className="flex justify-center items-center">
+                    <img 
+                      src={item.image} 
+                      alt={item.title} 
+                      className="max-w-full max-h-[60vh] object-contain rounded-lg shadow-lg" 
+                    />
                   </div>
                 </div>
               </div>

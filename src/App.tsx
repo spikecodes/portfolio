@@ -9,11 +9,20 @@ import {
 } from "framer-motion";
 import { Navbar } from "./components/ui/navbar";
 import { ThemeToggle } from "./components/ui/theme-toggle";
-import { Linkedin, Github, Mail, Palette, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Linkedin,
+  Github,
+  Mail,
+  Palette,
+  ExternalLink,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { StickyScroll } from "./components/ui/sticky-scroll-reveal";
 import profilePhoto from "./assets/profile-photo.jpg";
 import { BackgroundBoxesDemo } from "./components/ui/background-boxes";
-import Carousel from './components/Carousel';
+import Carousel from "./components/Carousel";
+import WebDesignMarquee from "./components/WebDesignMarquee";
 
 const fadeInUpVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -243,7 +252,11 @@ const App = () => {
               variants={fadeInUpVariants}
               className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 font-display tracking-tight"
             >
-              Developer, <span className="animate-gradient bg-gradient-to-r from-primary via-primary-light to-primary-dark bg-[length:200%_200%] bg-clip-text text-transparent">designer</span> and
+              Developer,{" "}
+              <span className="animate-gradient bg-gradient-to-r from-primary via-primary-light to-primary-dark bg-[length:200%_200%] bg-clip-text text-transparent">
+                designer
+              </span>{" "}
+              and
               <br /> aspiring entrepreneur
             </motion.h1>
             <motion.div
@@ -336,8 +349,8 @@ const App = () => {
             >
               I'm a Computer Science student at UC Irvine with a passion for
               full-stack development and AI. Currently, I'm working as a Full
-              Stack Software Intern at Portal AI, where I've shipped 80+ features
-              to an AI web browser serving 30,000 users/month.
+              Stack Software Intern at Portal AI, where I've shipped 80+
+              features to an AI web browser serving 30,000 users/month.
             </motion.p>
           </div>
         </AnimatedSection>
@@ -348,72 +361,75 @@ const App = () => {
           </h2>
           <StickyScroll content={projects} />
         </section>
+      </div>
 
+      {/* WebDesignMarquee component outside of any container */}
+      <WebDesignMarquee />
+
+      <div className="container-narrow">
         <section className="w-full py-12 sm:py-16 bg-background-light dark:bg-background-dark">
-          <div className="container-wide">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-12">Experience</h2>
-            <div className="space-y-8">
-              {[
-                {
-                  title: "Full Stack Software Intern",
-                  company: "Portal AI",
-                  date: "Dec 2023 – Present",
-                  responsibilities: [
-                    "Shipped 80+ features to a venture-backed startup's AI web browser and LLM interface serving 30,000 users/mo",
-                    "Built a high-performance vector database in Rust with SQL query support and cloud syncing with Postgres server",
-                    "Launched a conversational voice AI in Python with < 600ms latency, web agent capabilities, and RAG",
-                    "Worked closely with fast-paced teams to develop Electron-based browser in Node, TypeScript, React, and Tailwind",
-                  ],
-                },
-                {
-                  title: "Freelance Web Developer",
-                  company: "Self-employed",
-                  date: "Nov 2021 – Dec 2023",
-                  responsibilities: [
-                    "Created high-converting websites for businesses and public figures using Webflow, Figma, and Framer",
-                    "Organically increased web traffic by 2-3x for more than 90% of clients through maximizing SEO and page speed",
-                    "Designed stunning landing pages and 0→1 web branding featured in 32 Behance and Dribbble collections",
-                  ],
-                },
-                {
-                  title: "Frontend and Webmaster Intern",
-                  company: "Maximize Athletic Performance",
-                  date: "Mar 2023 – Nov 2023",
-                  responsibilities: [
-                    "Designed and maintained website, Shopify store, and JotForm assessment form for private gym",
-                    "Architected automation pipelines saving 10 hours/week on client processing using webhooks and Zapier",
-                  ],
-                },
-              ].map((job, index, array) => (
-                <div key={index}>
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-baseline">
-                      <div>
-                        <h3 className="text-2xl sm:text-3xl font-semibold">
-                          {job.title}
-                        </h3>
-                        <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 mt-1">
-                          {job.company}
-                        </p>
-                      </div>
-                      <p className="text-base sm:text-lg text-gray-500 dark:text-gray-400">
-                        {job.date}
+          <h2 className="text-4xl sm:text-5xl font-bold mb-12">Experience</h2>
+          <div className="space-y-8">
+            {[
+              {
+                title: "Full Stack Software Intern",
+                company: "Portal AI",
+                date: "Dec 2023 – Present",
+                responsibilities: [
+                  "Shipped 80+ features to a venture-backed startup's AI web browser and LLM interface serving 30,000 users/mo",
+                  "Built a high-performance vector database in Rust with SQL query support and cloud syncing with Postgres server",
+                  "Launched a conversational voice AI in Python with < 600ms latency, web agent capabilities, and RAG",
+                  "Worked closely with fast-paced teams to develop Electron-based browser in Node, TypeScript, React, and Tailwind",
+                ],
+              },
+              {
+                title: "Freelance Web Developer",
+                company: "Self-employed",
+                date: "Nov 2021 – Dec 2023",
+                responsibilities: [
+                  "Created high-converting websites for businesses and public figures using Webflow, Figma, and Framer",
+                  "Organically increased web traffic by 2-3x for more than 90% of clients through maximizing SEO and page speed",
+                  "Designed stunning landing pages and 0→1 web branding featured in 32 Behance and Dribbble collections",
+                ],
+              },
+              {
+                title: "Frontend and Webmaster Intern",
+                company: "Maximize Athletic Performance",
+                date: "Mar 2023 – Nov 2023",
+                responsibilities: [
+                  "Designed and maintained website, Shopify store, and JotForm assessment form for private gym",
+                  "Architected automation pipelines saving 10 hours/week on client processing using webhooks and Zapier",
+                ],
+              },
+            ].map((job, index, array) => (
+              <div key={index}>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-baseline">
+                    <div>
+                      <h3 className="text-2xl sm:text-3xl font-semibold">
+                        {job.title}
+                      </h3>
+                      <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 mt-1">
+                        {job.company}
                       </p>
                     </div>
-                    <ul className="list-disc list-inside space-y-2">
-                      {job.responsibilities.map((resp, i) => (
-                        <li key={i} className="text-base sm:text-lg">
-                          {resp}
-                        </li>
-                      ))}
-                    </ul>
+                    <p className="text-base sm:text-lg text-gray-500 dark:text-gray-400">
+                      {job.date}
+                    </p>
                   </div>
-                  {index < array.length - 1 && (
-                    <div className="border-b border-gray-200 dark:border-gray-700 my-8"></div>
-                  )}
+                  <ul className="list-disc list-inside space-y-2">
+                    {job.responsibilities.map((resp, i) => (
+                      <li key={i} className="text-base sm:text-lg">
+                        {resp}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              ))}
-            </div>
+                {index < array.length - 1 && (
+                  <div className="border-b border-gray-200 dark:border-gray-700 my-8"></div>
+                )}
+              </div>
+            ))}
           </div>
         </section>
 

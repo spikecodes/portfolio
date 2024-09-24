@@ -182,3 +182,20 @@ img {
     transparent 100%
   );
 }
+
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('/path/to/PPEditorialNew-Italic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+}
+
+.pp-editorial-new-italic {
+  font-family: 'PP Editorial New', serif;
+  font-style: italic;
+}
+
+.playfair-display-italic {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}

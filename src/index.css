@@ -69,6 +69,11 @@
   }
 }
 
+::selection {
+  background-color: var(--primary);
+  color: black;
+}
+
 /* Custom cursor styles */
 .cursor-none {
   cursor: none;

@@ -65,17 +65,17 @@ const AnimatedSection = ({
 
 const App = () => {
   const projects = [
+    // {
+    //   title: "Web Page Search Engine",
+    //   date: "Feb 2024 – Mar 2024",
+    //   description:
+    //     "Engineered a web page search engine in Python, implementing PageRank and cosine similarity for ranking. The project involved implementing zlib compression, which reduced index storage by 60% while maintaining search precision. A Streamlit web interface was created, enabling query response times of less than 2 seconds for multi-word searches, showcasing the efficiency and practicality of the search engine.",
+    //   content: (
+    //     <div className="w-full h-full bg-gradient-to-br from-primary to-primary-dark" />
+    //   ),
+    // },
     {
-      title: "Web Page Search Engine",
-      date: "Feb 2024 – Mar 2024",
-      description:
-        "Engineered a web page search engine in Python, implementing PageRank and cosine similarity for ranking. The project involved implementing zlib compression, which reduced index storage by 60% while maintaining search precision. A Streamlit web interface was created, enabling query response times of less than 2 seconds for multi-word searches, showcasing the efficiency and practicality of the search engine.",
-      content: (
-        <div className="w-full h-full bg-gradient-to-br from-primary to-primary-dark" />
-      ),
-    },
-    {
-      title: "Full-Stack Stock Trading Simulator",
+      title: "Stotra: Multiplayer Stock Trading Simulator",
       date: "Jul 2023 – Aug 2023",
       description:
         "Developed a real-time stock trading simulator utilizing React with TypeScript for the frontend and Node.js/Express for the backend. The project included constructing an OpenAPI 3.0-compliant API with JWT authentication to interface with MongoDB and third-party APIs. AWS services were leveraged to host the backend (EC2, CloudFormation, Cloudfront) and deploy the frontend on AWS Amplify, demonstrating proficiency in full-stack development and cloud deployment.",
@@ -83,24 +83,33 @@ const App = () => {
         <div className="w-full h-full bg-gradient-to-br from-primary to-gray" />
       ),
     },
+    // {
+    //   title: "Scholarship Management SaaS",
+    //   date: "Jun 2023 – Apr 2024",
+    //   description:
+    //     "Created an internal CRUD tool for Culver City Scholarship Fund using Python, JavaScript, and PostgreSQL. The system allows for database management, AI data analysis, scoped user authentication, and form automation pipelines. This user-friendly system serves over 250 applicants, resulting in savings of $8000 per year and 40 hours for each cohort, showcasing the project's significant impact on efficiency and cost-saving.",
+    //   content: (
+    //     <div className="w-full h-full bg-gradient-to-br from-gray to-primary" />
+    //   ),
+    // },
     {
-      title: "Scholarship Management SaaS",
-      date: "Jun 2023 – Apr 2024",
-      description:
-        "Created an internal CRUD tool for Culver City Scholarship Fund using Python, JavaScript, and PostgreSQL. The system allows for database management, AI data analysis, scoped user authentication, and form automation pipelines. This user-friendly system serves over 250 applicants, resulting in savings of $8000 per year and 40 hours for each cohort, showcasing the project's significant impact on efficiency and cost-saving.",
-      content: (
-        <div className="w-full h-full bg-gradient-to-br from-gray to-primary" />
-      ),
-    },
-    {
-      title: "Libreddit: Full-Stack Web App",
+      title: "Libreddit: Private Frontend for Reddit",
       date: "Jun 2020 – Jul 2023",
       description:
-        "Developed a full-stack web application using Rust, providing speedy and private Reddit access to 4,000,000 users per month. The project involved creating a custom HTTP2 client/server, which provided users with a 'Time to Interactive' of 2.8 seconds, significantly faster than Reddit's 12.4 seconds. A project network of over 100 Libreddit instances hosted by volunteers worldwide was formed, demonstrating the project's scalability and community impact.",
+        "Developed a full-stack web application using Rust, providing speedy and private Reddit access to 4,000,000 users per month. The project involved creating a custom HTTP2 client/server, which provided users with a 'Time to Interactive' of 2.8 seconds, significantly faster than Reddit's 12.4 seconds. A project network of over 100 Libreddit instances hosted by volunteers worldwide was formed",
       content: (
         <div className="w-full h-full bg-gradient-to-br from-primary-dark to-primary" />
       ),
     },
+  {
+    title: "Peacock: The Privacy Web Browser",
+    date: "Aug 2022 – Present",
+    description:
+      "Developed an experimental private-by-default web browser using Electron, JavaScript, and Node.js to gain a deeper understanding of Internet protocols and browser architecture. The project has garnered significant interest, with over 25,000 downloads on GitHub",
+    content: (
+      <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500" />
+    ),
+  },
   ];
 
   const [isDark, setIsDark] = useState(true);

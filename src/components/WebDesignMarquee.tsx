@@ -26,6 +26,12 @@ const projects = [
 ];
 
 const WebDesignMarquee: React.FC = () => {
+  // Double the projects array to ensure continuous loop
+  const doubledProjects = [...projects, ...projects];
+
+  // Calculate the total width of all projects
+  const totalWidth = doubledProjects.length * 384; // 384px is w-96
+
   return (
     <div className="py-20 overflow-hidden w-full relative">
       <h2 className="text-4xl sm:text-5xl font-bold text-center mb-8">Freelance Web Design</h2>
@@ -42,7 +48,7 @@ const WebDesignMarquee: React.FC = () => {
               key={index}
               className="flex space-x-4 mb-4"
               animate={{
-                x: index === 0 ? [0, -2400] : [-2400, 0],
+                x: index === 0 ? [-totalWidth, 0] : [0, -totalWidth],
               }}
               transition={{
                 x: {
@@ -52,14 +58,20 @@ const WebDesignMarquee: React.FC = () => {
                   ease: "linear",
                 },
               }}
+              style={{
+                width: `${totalWidth}px`,
+              }}
             >
-              {projects.map((project, i) => (
+              {doubledProjects.map((project, i) => (
                 <a
                   key={i}
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="relative flex-shrink-0 w-96 h-72 rounded-lg overflow-hidden group"
+                  style={{
+                    transform: `translateX(${index * 192}px)`, // Offset the second row by half the width of a project
+                  }}
                 >
                   <img
                     src={project.image}

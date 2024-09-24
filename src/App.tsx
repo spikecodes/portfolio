@@ -381,7 +381,7 @@ const App = () => {
                 ],
               },
               {
-                title: "Freelance Web Developer",
+                title: "Freelance Web Designer and Developer",
                 company: "Self-employed",
                 date: "Nov 2021 – Dec 2023",
                 responsibilities: [

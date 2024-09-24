@@ -163,3 +163,22 @@ img {
     }
   }
 }
+
+/* Add this to your existing styles */
+
+.marquee-mask {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 95%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 95%,
+    transparent 100%
+  );
+}

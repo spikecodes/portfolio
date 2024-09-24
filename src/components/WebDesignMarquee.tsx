@@ -27,7 +27,7 @@ const projects = [
 
 const WebDesignMarquee: React.FC = () => {
   return (
-    <div className="py-20 overflow-hidden w-full">
+    <div className="py-20 overflow-hidden w-full relative">
       <h2 className="text-4xl sm:text-5xl font-bold text-center mb-8">Freelance Web Design</h2>
       <div className="flex justify-center mb-8">
         <div className="bg-primary bg-opacity-20 text-text-light dark:text-text-dark rounded-full px-4 py-2 flex items-center">
@@ -36,43 +36,45 @@ const WebDesignMarquee: React.FC = () => {
         </div>
       </div>
       <div className="relative">
-        {[0, 1].map((index) => (
-          <motion.div
-            key={index}
-            className="flex space-x-4 mb-4"
-            animate={{
-              x: index === 0 ? [0, -2400] : [-2400, 0],
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 60,
-                ease: "linear",
-              },
-            }}
-          >
-            {projects.map((project, i) => (
-              <a
-                key={i}
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative flex-shrink-0 w-96 h-72 rounded-lg overflow-hidden group"
-              >
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white p-4">
-                  <h3 className="text-xl font-semibold text-center">{project.name}</h3>
-                  <p className="text-sm mt-2 text-center">{project.description}</p>
-                </div>
-              </a>
-            ))}
-          </motion.div>
-        ))}
+        <div className="marquee-mask">
+          {[0, 1].map((index) => (
+            <motion.div
+              key={index}
+              className="flex space-x-4 mb-4"
+              animate={{
+                x: index === 0 ? [0, -2400] : [-2400, 0],
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 60,
+                  ease: "linear",
+                },
+              }}
+            >
+              {projects.map((project, i) => (
+                <a
+                  key={i}
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative flex-shrink-0 w-96 h-72 rounded-lg overflow-hidden group"
+                >
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white p-4">
+                    <h3 className="text-xl font-semibold text-center">{project.name}</h3>
+                    <p className="text-sm mt-2 text-center">{project.description}</p>
+                  </div>
+                </a>
+              ))}
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -355,7 +355,7 @@ const App = () => {
           </div>
         </AnimatedSection>
 
-        <section id="projects" className="w-full py-12 sm:py-16">
+        <section id="projects" className="w-full pt-12 sm:pt-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-center mb-8">
             Projects
           </h2>

@@ -30,7 +30,7 @@ const carouselContent = [
     image: notive,
     alt: "UCI AI Innovation Challenge",
     tagline: "UCI AI Innovation Challenge, <span class='font-normal'>January 2024</span>",
-    description: "Won 1st place out of 26 teams with our AI-driven project <a href='https://news.uci.edu/2024/02/02/uc-irvines-antrepreneur-center-announces-winners-of-ai-innovation-challenge/' target='_blank' rel='noopener noreferrer' class='inline-flex items-center hover:underline text-primary group'>Notive</a>, revolutionizing the student experience through innovative AI applications."
+    description: "Won 1st place and $10,000 with our AI-driven project <a href='https://news.uci.edu/2024/02/02/uc-irvines-antrepreneur-center-announces-winners-of-ai-innovation-challenge/' target='_blank' rel='noopener noreferrer' class='inline-flex items-center hover:underline text-primary group'>Notive</a>, revolutionizing the student note-taking experience through innovative AI applications."
   },
   {
     image: adapted,
@@ -277,7 +277,7 @@ const App = () => {
               variants={fadeInUpVariants}
               className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 font-display"
             >
-              Developer, designer and
+              Developer, <span className="animate-gradient bg-gradient-to-r from-primary via-primary-light to-primary-dark bg-[length:200%_200%] bg-clip-text text-transparent">designer</span> and
               <br /> aspiring entrepreneur
             </motion.h1>
             <motion.div

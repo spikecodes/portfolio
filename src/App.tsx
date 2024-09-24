@@ -430,40 +430,6 @@ const App = () => {
             ))}
           </div>
         </section>
-
-        <AnimatedSection variants={fadeInUpVariants} className="py-12 sm:py-16">
-          <motion.h2
-            variants={fadeInUpVariants}
-            className="text-2xl sm:text-3xl font-semibold mb-4"
-          >
-            Skills
-          </motion.h2>
-          <motion.div
-            variants={fadeInUpVariants}
-            className="flex flex-wrap gap-2"
-          >
-            {[
-              "TypeScript",
-              "JavaScript",
-              "Python",
-              "React",
-              "Node.js",
-              "Rust",
-              "AWS",
-              "Docker",
-            ].map((skill, index) => (
-              <motion.span
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-                className="bg-primary text-text-light px-3 py-1.5 rounded-full text-sm sm:text-base"
-              >
-                {skill}
-              </motion.span>
-            ))}
-          </motion.div>
-        </AnimatedSection>
       </div>
 
       <motion.div

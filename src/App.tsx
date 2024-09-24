@@ -275,9 +275,9 @@ const App = () => {
           >
             <motion.h1
               variants={fadeInUpVariants}
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 font-display"
+              className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 font-display tracking-tight"
             >
-              Developer, <span className="animate-gradient bg-gradient-to-r from-primary via-primary-light to-primary-dark bg-[length:200%_200%] bg-clip-text text-transparent">designer</span> and
+              Developer, <span className="animate-gradient bg-gradient-to-r from-teal-600 to-orange-600 bg-[length:200%_200%] bg-clip-text text-transparent">designer</span> and
               <br /> aspiring entrepreneur
             </motion.h1>
             <motion.div

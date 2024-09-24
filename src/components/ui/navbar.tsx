@@ -42,7 +42,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
   return (
     <>
       <motion.nav
-        className="fixed top-4 left-1/2 z-50 w-full max-w-[95vw] sm:max-w-[600px]"
+        className="fixed top-4 left-1/2 z-50 w-full sm:w-auto max-w-[95vw]"
         initial={{ y: -100, x: "-50%" }}
         animate={{ y: 0, x: "-50%" }}
         transition={{ duration: 0.5 }}

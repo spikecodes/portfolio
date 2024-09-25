@@ -2,7 +2,7 @@ import React from "react";
 
 const Experience: React.FC = () => {
   return (
-    <section className="w-full py-12 sm:py-16 bg-background-light dark:bg-background-dark">
+    <section className="w-full py-12 sm:py-16 bg-background-light dark:bg-background-dark" id="experience">
       <h2 className="text-4xl sm:text-5xl font-bold mb-12">Experience</h2>
       <div className="space-y-8">
         {[

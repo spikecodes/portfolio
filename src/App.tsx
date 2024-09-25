@@ -325,12 +325,9 @@ const App = () => {
         </div>
       </div>
 
-      <AnimatedSection
-        variants={fadeInUpVariants}
-        className="container-wide relative w-full overflow-hidden"
-      >
+      <div className="container-wide relative w-full overflow-hidden">
         <Carousel onImageHover={handleCarouselImageHover} />
-      </AnimatedSection>
+      </div>
 
       <div className="container-narrow">
         <AnimatedSection variants={fadeInUpVariants}>
@@ -346,9 +343,8 @@ const App = () => {
               className="text-base sm:text-lg"
             >
               I'm a Computer Science student at UC Irvine with a passion for
-              full-stack development and AI. Currently, I'm working as a Full
-              Stack Software Intern at Portal AI, where I've shipped 80+
-              features to an AI web browser serving 30,000 users/month.
+              full-stack development and AI. I love badminton, hackathons, and
+              building innovative consumer products.
             </motion.p>
           </div>
         </AnimatedSection>

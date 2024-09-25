@@ -118,10 +118,9 @@ const Carousel: React.FC<CarouselProps> = ({ onImageHover }) => {
     <>
       <motion.div
         className="relative rounded-3xl shadow-lg overflow-hidden h-[600px]"
-        variants={{
-          hidden: { opacity: 0, y: 20 },
-          visible: { opacity: 1, y: 0 },
-        }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
       >
         <AnimatePresence mode="wait">
           <motion.img
@@ -138,7 +137,7 @@ const Carousel: React.FC<CarouselProps> = ({ onImageHover }) => {
             onMouseLeave={() => onImageHover(false, "")}
           />
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent from-80% to-black opacity-70 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent from-50% sm:from-70% to-black opacity-70 pointer-events-none"></div>
         <div 
           ref={descriptionRef}
           className="absolute bottom-0 left-0 right-0 p-8 text-white"

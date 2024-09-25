@@ -87,7 +87,7 @@ export const StickyScroll = () => {
     <motion.div
       ref={containerRef}
       className="relative w-full"
-      style={{ height: `${projects.length * 100}vh` }}
+      style={{ height: `${(projects.length - 1) * 100}vh` }}
     >
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <div className="w-full">

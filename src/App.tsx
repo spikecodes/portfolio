@@ -177,7 +177,7 @@ const App = () => {
         <AboutMe />
 
         <section id="projects" className="w-full pt-12 sm:pt-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-8">
+          <h2 className="text-4xl sm:text-5xl font-bold text-center">
             Projects
           </h2>
           <StickyScroll />

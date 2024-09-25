@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
@@ -35,6 +35,11 @@ const MenuIcon = ({ isOpen }: { isOpen: boolean }) => (
 
 export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [position, setPosition] = useState({
+    left: 0,
+    width: 0,
+    opacity: 0,
+  });
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -53,16 +58,19 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
             isScrolled ? "shadow-md" : ""
           } px-6 py-3`}
         >
-          <ul className="flex items-center justify-center space-x-2">
+          <ul
+            className="flex items-center justify-center space-x-2 relative"
+            onMouseLeave={() => {
+              setPosition((pv) => ({
+                ...pv,
+                opacity: 0,
+              }));
+            }}
+          >
             {navItems.map((item) => (
-              <li key={item.name}>
-                <a
-                  href={item.href}
-                  className="px-4 py-2 rounded-full text-md font-medium transition-colors text-gray-900 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 cursor-none"
-                >
-                  {item.name}
-                </a>
-              </li>
+              <Tab key={item.name} setPosition={setPosition} href={item.href}>
+                {item.name}
+              </Tab>
             ))}
             <motion.li
               initial={{ opacity: 0, width: 0 }}
@@ -76,6 +84,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
                 Contact
               </button>
             </motion.li>
+            <Cursor position={position} />
           </ul>
         </div>
       </motion.nav>
@@ -130,3 +139,43 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
     </>
   );
 };
+
+const Tab = ({ children, setPosition, href }) => {
+  const ref = useRef(null);
+
+  return (
+    <li
+      ref={ref}
+      onMouseEnter={() => {
+        if (!ref?.current) return;
+        const { width } = ref.current.getBoundingClientRect();
+        setPosition({
+          left: ref.current.offsetLeft - 8,
+          width,
+          opacity: 1,
+        });
+      }}
+      className="relative z-10"
+    >
+      <a
+        href={href}
+        className="block px-4 py-2 rounded-full text-md font-medium transition-colors text-gray-900 dark:text-gray-300 hover:text-black dark:hover:text-white cursor-none"
+      >
+        {children}
+      </a>
+    </li>
+  );
+};
+
+const Cursor = ({ position }) => {
+  return (
+    <motion.li
+      animate={{
+        ...position,
+      }}
+      className="absolute z-0 h-full rounded-full bg-gray-100 dark:bg-gray-700"
+    />
+  );
+};
+
+export default Navbar;

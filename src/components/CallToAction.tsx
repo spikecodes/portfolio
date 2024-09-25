@@ -15,7 +15,7 @@ const CallToAction: React.FC = () => {
       animate="visible"
       className="py-20"
     >
-      <div className="cta-mesh-gradient rounded-3xl p-12 text-center text-white">
+      <div className="cta-mesh-gradient rounded-3xl p-12 py-20 text-center text-white">
         <h2 className="text-3xl sm:text-4xl font-bold mb-4">Let's Create Something Amazing Together</h2>
         <p className="text-lg mb-8">I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
         <motion.a

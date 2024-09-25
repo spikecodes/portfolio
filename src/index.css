@@ -219,17 +219,41 @@ img {
   mask-image: linear-gradient(
     to right,
     transparent,
-    black 10%,
+    black 5%,
     black 95%,
     transparent 100%
   );
   -webkit-mask-image: linear-gradient(
     to right,
     transparent,
-    black 10%,
+    black 5%,
     black 95%,
     transparent 100%
   );
+  transform: rotate(-4deg) scale(1.1);
+  padding: 40px 0;
+}
+
+/* Add styles for the screen mockup effect */
+.marquee-mask a {
+  position: relative;
+}
+
+.marquee-mask a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 6px solid rgba(0, 0, 0, 1);
+  border-radius: 0.5rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dark .marquee-mask a::before {
+  border-color: rgba(70, 70, 70, 1);
 }
 
 @font-face {

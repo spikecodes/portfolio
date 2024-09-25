@@ -34,15 +34,15 @@ const WebDesignMarquee: React.FC = () => {
 
   return (
     <div className="py-20 overflow-hidden w-full relative">
-      <h2 className="text-4xl sm:text-5xl font-bold text-center mb-8">Freelance Web Design</h2>
-      <div className="flex justify-center mb-8">
+      <h2 className="text-4xl sm:text-5xl font-bold text-center mb-4">Freelance Web Design</h2>
+      <div className="flex justify-center mb-12">
         <div className="bg-primary bg-opacity-20 text-text-light dark:text-text-dark rounded-full px-4 py-2 flex items-center">
           <Info size={20} className="mr-2" />
           <span>Note: I'm no longer taking on new freelance projects.</span>
         </div>
       </div>
       <div className="relative">
-        <div className="marquee-mask">
+        <div className="marquee-mask rotate-[-4deg] scale-110">
           {[0, 1].map((index) => (
             <motion.div
               key={index}
@@ -73,6 +73,7 @@ const WebDesignMarquee: React.FC = () => {
                     transform: `translateX(${index * 192}px)`, // Offset the second row by half the width of a project
                   }}
                 >
+                  <div className="absolute inset-0 border-4 border-gray-200 dark:border-gray-700 rounded-lg pointer-events-none"></div>
                   <img
                     src={project.image}
                     alt={project.name}

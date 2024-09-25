@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ThemeToggle } from "./ui/theme-toggle";
 import profilePhoto from "../assets/profile-photo.jpg";
-import { Mail, Linkedin, Github, Palette } from "lucide-react";
+import { Mail, Linkedin, Github, Palette, FileText } from "lucide-react";
 
 const fadeInDownVariants = {
   hidden: { opacity: 0, y: -20 },
@@ -20,6 +20,14 @@ interface HeaderProps {
 }
 
 const Header = React.forwardRef<HTMLDivElement, HeaderProps>(({ isDark, toggleTheme }, ref) => {
+  const socialIcons = [
+    { href: "mailto:career@spike.codes", icon: Mail, label: "Email" },
+    { href: "https://linkedin.com/in/spike-ocarroll", icon: Linkedin, label: "LinkedIn" },
+    { href: "https://github.com/spikecodes", icon: Github, label: "GitHub" },
+    { href: "https://behance.net/spikecodes", icon: Palette, label: "Behance" },
+    { href: "/Spike_O'Carroll_Resume.pdf", icon: FileText, label: "Resume" },
+  ];
+
   return (
     <div className="-z-[-2] relative">
       <motion.section variants={fadeInDownVariants} animate="visible" initial="hidden" className="">
@@ -61,42 +69,26 @@ const Header = React.forwardRef<HTMLDivElement, HeaderProps>(({ isDark, toggleTh
           variants={fadeInUpVariants}
           className="flex flex-wrap gap-4 mb-12"
         >
-          {[
-            {
-              href: "mailto:career@spike.codes",
-              icon: Mail,
-              label: "",
-            },
-            {
-              href: "https://linkedin.com/in/spike-ocarroll",
-              icon: Linkedin,
-              label: "",
-            },
-            {
-              href: "https://github.com/spikecodes",
-              icon: Github,
-              label: "",
-            },
-            {
-              href: "https://behance.net/spikecodes",
-              icon: Palette,
-              label: "",
-            },
-          ].map((social, index) => (
+          {socialIcons.map((social, index) => (
             <motion.a
               key={index}
               href={social.href}
+              target={social.label === "Resume" ? "_blank" : undefined}
+              rel={social.label === "Resume" ? "noopener noreferrer" : undefined}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="social-icon hover:bg-primary/10 dark:hover:bg-primary/20"
+              className="social-icon hover:bg-primary/10 dark:hover:bg-primary/20 relative group"
             >
               <social.icon size={24} className="sm:w-6 sm:h-6" />
+              <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 delay-500 pointer-events-none">
+                {social.label}
+              </span>
             </motion.a>
           ))}
         </motion.div>
         <div className="flex justify-end">
           <motion.a
-          href="mailto:career@spike.codes"
+            href="mailto:career@spike.codes"
             variants={fadeInUpVariants}
             className="btn bg-primary text-text-light hover:bg-primary-dark hover:text-white dark:hover:bg-primary-light transition-colors group"
             whileHover={{ scale: 1.05 }}

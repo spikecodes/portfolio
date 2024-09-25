@@ -1,42 +1,49 @@
 import React from "react";
-import { Mail, MapPin, ExternalLink } from "lucide-react";
+import { Mail, Linkedin, Github, Palette, FileText, MapPin } from "lucide-react";
 
 const Footer: React.FC = () => {
+  const socialIcons = [
+    { href: "mailto:career@spike.codes", icon: Mail, label: "Email" },
+    { href: "https://linkedin.com/in/spike-ocarroll", icon: Linkedin, label: "LinkedIn" },
+    { href: "https://github.com/spikecodes", icon: Github, label: "GitHub" },
+    { href: "https://behance.net/spikecodes", icon: Palette, label: "Behance" },
+    { href: "/Spike_O'Carroll_Resume.pdf", icon: FileText, label: "Resume" },
+  ];
+
   return (
-    <footer className="py-16 border-t border-gray-200 dark:border-gray-700">
-      <div className="flex flex-col sm:flex-row justify-center sm:items-center sm:space-x-20">
-        <div className="mb-6 sm:mb-0 text-left">
-          <h3 className="text-2xl font-bold mb-3">Spike</h3>
-          <div className="flex items-center mb-2 text-lg">
-            <Mail className="mr-2 text-primary" size={20} />
-            <a href="mailto:career@spike.codes" className="hover:underline">career@spike.codes</a>
+    <footer className="py-8 mt-16">
+      <div className="container-narrow">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="mb-4 md:mb-0">
+            <p className="text-md font-semibold text-gray-500 dark:text-gray-300">
+              © 2024 Spike O'Carroll. All rights reserved.
+            </p>
+            <p className="text-md text-gray-500 dark:text-gray-300">
+              Built with <a href="https://react.dev/" className="text-gray-500 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors duration-200 underline">React</a>, <a href="https://tailwindcss.com/" className="text-gray-500 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors duration-200 underline">Tailwind</a>, and <a href="https://aceternity.com/" className="text-gray-500 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors duration-200 underline">Aceternity</a>. Source available on <a href="https://github.com/spikecodes/portfolio" className="text-gray-500 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors duration-200 underline">GitHub</a>.
+            </p>
           </div>
-          <div className="flex items-center text-lg">
-            <MapPin className="mr-2 text-primary" size={20} />
-            <span>Irvine, CA</span>
-          </div>
-        </div>
-        <div className="text-left">
-          <h3 className="text-xl font-semibold mb-3">Made with</h3>
-          <ul className="space-y-2 text-lg">
-            {[
-              { name: "React", url: "https://reactjs.org/" },
-              { name: "Tailwind", url: "https://tailwindcss.com/" },
-              { name: "Aceternity", url: "https://ui.aceternity.com/" },
-            ].map((tech) => (
-              <li key={tech.name}>
+          <div className="flex flex-col items-center md:items-end">
+            <div className="flex items-center mb-2">
+              <MapPin size={16} className="mr-2" />
+              <span className="text-md">Irvine, CA</span>
+            </div>
+            <div className="flex space-x-4 mt-2">
+              {socialIcons.map((social, index) => (
                 <a
-                  href={tech.url}
+                  key={index}
+                  href={social.href}
                   target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center hover:underline"
+                  className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light transition-colors duration-200 relative group"
+                  title={social.label}
                 >
-                  {tech.name}
-                  <ExternalLink className="ml-1" size={16} />
+                  <social.icon size={24} />
+                  <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    {social.label}
+                  </span>
                 </a>
-              </li>
-            ))}
-          </ul>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </footer>

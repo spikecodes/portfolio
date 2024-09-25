@@ -1,24 +1,24 @@
 import { useState, useEffect, useRef } from "react";
 import {
   motion,
-  useInView,
+  // useInView,
   useScroll,
-  useTransform,
+  // useTransform,
   useMotionValue,
-  AnimatePresence,
+  // AnimatePresence,
 } from "framer-motion";
 import { Navbar } from "./components/ui/navbar";
-import { ThemeToggle } from "./components/ui/theme-toggle";
-import {
-  Linkedin,
-  Github,
-  Mail,
-  Palette,
-  MapPin,
-  ExternalLink,
-} from "lucide-react";
+// import { ThemeToggle } from "./components/ui/theme-toggle";
+// import {
+//   Linkedin,
+//   Github,
+//   Mail,
+//   Palette,
+//   MapPin,
+//   ExternalLink,
+// } from "lucide-react";
 import { StickyScroll } from "./components/ui/sticky-scroll-reveal";
-import profilePhoto from "./assets/profile-photo.jpg";
+// import profilePhoto from "./assets/profile-photo.jpg";
 import { BackgroundBoxesDemo } from "./components/ui/background-boxes";
 import Carousel from "./components/Carousel";
 import WebDesignMarquee from "./components/WebDesignMarquee";
@@ -28,44 +28,44 @@ import Experience from "./components/Experience";
 import CallToAction from "./components/CallToAction";
 import Footer from "./components/Footer";
 
-const fadeInUpVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
+// const fadeInUpVariants = {
+//   hidden: { opacity: 0, y: 20 },
+//   visible: { opacity: 1, y: 0 },
+// };
 
-const fadeInDownVariants = {
-  hidden: { opacity: 0, y: -20 },
-  visible: { opacity: 1, y: 0 },
-};
+// const fadeInDownVariants = {
+//   hidden: { opacity: 0, y: -20 },
+//   visible: { opacity: 1, y: 0 },
+// };
 
-const AnimatedSection = ({
-  children,
-  variants,
-  className,
-}: {
-  children: React.ReactNode;
-  variants: {
-    hidden: object;
-    visible: object;
-  };
-  className?: string;
-}) => {
-  const ref = useRef<HTMLElement | null>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+// const AnimatedSection = ({
+//   children,
+//   variants,
+//   className,
+// }: {
+//   children: React.ReactNode;
+//   variants: {
+//     hidden: object;
+//     visible: object;
+//   };
+//   className?: string;
+// }) => {
+//   const ref = useRef<HTMLElement | null>(null);
+//   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
-  return (
-    <motion.section
-      ref={ref}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      variants={variants}
-      transition={{ duration: 0.5 }}
-      className={className}
-    >
-      {children}
-    </motion.section>
-  );
-};
+//   return (
+//     <motion.section
+//       ref={ref}
+//       initial="hidden"
+//       animate={isInView ? "visible" : "hidden"}
+//       variants={variants}
+//       transition={{ duration: 0.5 }}
+//       className={className}
+//     >
+//       {children}
+//     </motion.section>
+//   );
+// };
 
 const App = () => {
   const [isDark, setIsDark] = useState(() => {

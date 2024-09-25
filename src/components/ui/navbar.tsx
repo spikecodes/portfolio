@@ -143,8 +143,19 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
   );
 };
 
-const Tab = ({ children, setPosition, href }) => {
-  const ref = useRef(null);
+// Add these interfaces
+interface TabProps {
+  children: React.ReactNode;
+  setPosition: (position: { left: number; width: number; opacity: number }) => void;
+  href: string;
+}
+
+interface CursorProps {
+  position: { left: number; width: number; opacity: number };
+}
+
+const Tab: React.FC<TabProps> = ({ children, setPosition, href }) => {
+  const ref = useRef<HTMLLIElement>(null);
 
   return (
     <li
@@ -170,7 +181,7 @@ const Tab = ({ children, setPosition, href }) => {
   );
 };
 
-const Cursor = ({ position }) => {
+const Cursor: React.FC<CursorProps> = ({ position }) => {
   return (
     <motion.li
       animate={{

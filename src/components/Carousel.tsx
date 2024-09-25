@@ -93,7 +93,7 @@ const Carousel: React.FC<CarouselProps> = ({ onImageHover }) => {
     setCurrentSlide((prev) => (prev - 1 + carouselContent.length) % carouselContent.length);
   };
 
-  const handleLinkHover = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleLinkHover = (_e: React.MouseEvent<HTMLAnchorElement>) => {
     setIsHoveringLink(true);
   };
 

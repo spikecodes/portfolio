@@ -14,6 +14,8 @@ import {
   Github,
   Mail,
   Palette,
+  MapPin,
+  ExternalLink,
 } from "lucide-react";
 import { StickyScroll } from "./components/ui/sticky-scroll-reveal";
 import profilePhoto from "./assets/profile-photo.jpg";
@@ -386,6 +388,62 @@ const App = () => {
             ))}
           </div>
         </section>
+
+        {/* Call to Action Section */}
+        <AnimatedSection variants={fadeInUpVariants} className="py-20">
+          <div className="cta-mesh-gradient rounded-3xl p-12 text-center text-white">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Let's Create Something Amazing Together</h2>
+            <p className="text-lg mb-8">I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
+            <motion.a
+              href="mailto:career@spike.codes"
+              className="inline-flex items-center px-10 py-4 bg-primary text-black rounded-full text-lg font-semibold hover:bg-primary-light transition-colors duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Mail className="mr-2" size={24} />
+              Get in Touch
+            </motion.a>
+          </div>
+        </AnimatedSection>
+
+        {/* Footer */}
+        <footer className="py-16 border-t border-gray-200 dark:border-gray-700">
+          <div className="flex flex-col sm:flex-row justify-center items-center sm:space-x-20">
+            <div className="mb-6 sm:mb-0 text-center sm:text-left">
+              <h3 className="text-2xl font-bold mb-3">Spike</h3>
+              <div className="flex items-center mb-2 text-lg">
+                <Mail className="mr-2 text-primary" size={20} />
+                <a href="mailto:career@spike.codes" className="hover:underline">career@spike.codes</a>
+              </div>
+              <div className="flex items-center text-lg">
+                <MapPin className="mr-2 text-primary" size={20} />
+                <span>Irvine, CA</span>
+              </div>
+            </div>
+            <div className="text-center sm:text-left">
+              <h3 className="text-xl font-semibold mb-3">Made with</h3>
+              <ul className="space-y-2 text-lg">
+                {[
+                  { name: "React", url: "https://reactjs.org/" },
+                  { name: "Tailwind", url: "https://tailwindcss.com/" },
+                  { name: "Aceternity", url: "https://ui.aceternity.com/" },
+                ].map((tech) => (
+                  <li key={tech.name}>
+                    <a
+                      href={tech.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center sm:justify-start hover:underline"
+                    >
+                      {tech.name}
+                      <ExternalLink className="ml-1" size={16} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </footer>
       </div>
 
       <motion.div

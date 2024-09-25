@@ -51,7 +51,7 @@ const Header = React.forwardRef<HTMLDivElement, HeaderProps>(({ isDark, toggleTh
           className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-2 font-display tracking-tight leading-tight"
         >
           Full-stack developer,{" "}
-          <span className="animate-gradient bg-gradient-to-r from-primary via-primary-light to-primary-dark bg-[length:200%_200%] bg-clip-text text-transparent playfair-display-italic">
+          <span className="animate-gradient bg-gradient-to-r from-primary-light to-primary-dark bg-[length:200%_200%] bg-clip-text text-transparent playfair-display-italic">
             designer
           </span>{" "}
           and
@@ -95,20 +95,19 @@ const Header = React.forwardRef<HTMLDivElement, HeaderProps>(({ isDark, toggleTh
           ))}
         </motion.div>
         <div className="flex justify-end">
-          <motion.button
+          <motion.a
+          href="mailto:career@spike.codes"
             variants={fadeInUpVariants}
-            className="btn bg-primary text-text-light hover:bg-primary-dark dark:hover:bg-primary-light transition-colors group"
+            className="btn bg-primary text-text-light hover:bg-primary-dark hover:text-white dark:hover:bg-primary-light transition-colors group"
             whileHover={{ scale: 1.05 }}
           >
             Get in touch
             <motion.div
               className="ml-2 w-8 h-8 rounded-full bg-transparent flex items-center justify-center overflow-hidden group-hover:bg-white"
-              animate={{ rotate: 0 }}
-              whileHover={{ rotate: -45 }}
             >
               <svg
                 viewBox="0 0 24 24"
-                className="w-5 h-5 text-text-light group-hover:text-text-light"
+                className="w-5 h-5 text-text-light group-hover:text-text-light group-hover:-rotate-45 transition-transform"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
@@ -119,7 +118,7 @@ const Header = React.forwardRef<HTMLDivElement, HeaderProps>(({ isDark, toggleTh
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
             </motion.div>
-          </motion.button>
+          </motion.a>
         </div>
       </motion.section>
     </div>

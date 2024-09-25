@@ -80,9 +80,12 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
               }}
               transition={{ duration: 0.3 }}
             >
-              <button className="bg-primary text-text-light px-4 py-2 rounded-full font-semibold text-sm whitespace-nowrap hover:bg-primary-dark transition-colors cursor-none">
+              <a
+                href="mailto:career@spike.codes"
+                className="inline-block bg-primary text-text-light px-4 py-2 rounded-full font-semibold text-sm whitespace-nowrap hover:bg-primary-dark transition-colors cursor-none"
+              >
                 Contact
-              </button>
+              </a>
             </motion.li>
             <Cursor position={position} />
           </ul>
@@ -173,7 +176,7 @@ const Cursor = ({ position }) => {
       animate={{
         ...position,
       }}
-      className="absolute z-0 h-full rounded-full bg-gray-100 dark:bg-gray-700"
+      className="absolute z-0 h-full rounded-full bg-gray-200 dark:bg-gray-700"
     />
   );
 };

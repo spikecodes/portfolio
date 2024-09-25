@@ -14,25 +14,12 @@ import {
   Github,
   Mail,
   Palette,
-  ExternalLink,
-  ChevronLeft,
-  ChevronRight,
 } from "lucide-react";
 import { StickyScroll } from "./components/ui/sticky-scroll-reveal";
 import profilePhoto from "./assets/profile-photo.jpg";
 import { BackgroundBoxesDemo } from "./components/ui/background-boxes";
 import Carousel from "./components/Carousel";
 import WebDesignMarquee from "./components/WebDesignMarquee";
-
-// Project logos
-import stotra_logo from "./assets/projects/stotra_logo.png";
-import libreddit_logo from "./assets/projects/libreddit_logo.png";
-import peacock_logo from "./assets/projects/peacock_logo.png";
-
-// Project images
-import stotra from "./assets/projects/stotra.png";
-import libreddit from "./assets/projects/libreddit.png";
-import peacock from "./assets/projects/peacock.png";
 
 const fadeInUpVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -74,33 +61,6 @@ const AnimatedSection = ({
 };
 
 const App = () => {
-  const projects = [
-    {
-      title: "Stotra: Multiplayer Stock Trading Simulator",
-      date: "Jul 2023 – Aug 2023",
-      description:
-        "Developed a real-time stock trading simulator utilizing React with TypeScript for the frontend and Node.js/Express for the backend. The project included constructing an OpenAPI 3.0-compliant API with JWT authentication to interface with MongoDB and third-party APIs. AWS services were leveraged to host the backend (EC2, CloudFormation, Cloudfront) and deploy the frontend on AWS Amplify, demonstrating proficiency in full-stack development and cloud deployment.",
-      icon: stotra_logo,
-      image: stotra,
-    },
-    {
-      title: "Libreddit: Private Frontend for Reddit",
-      date: "Jun 2020 – Jul 2023",
-      description:
-        "Developed a full-stack web application using Rust, providing speedy and private Reddit access to 4,000,000 users per month. The project involved creating a custom HTTP2 client/server, which provided users with a 'Time to Interactive' of 2.8 seconds, significantly faster than Reddit's 12.4 seconds. A project network of over 100 Libreddit instances hosted by volunteers worldwide was formed",
-      icon: libreddit_logo,
-      image: libreddit,
-    },
-    {
-      title: "Peacock: The Privacy Web Browser",
-      date: "Aug 2022 – Present",
-      description:
-        "Developed an experimental private-by-default web browser using Electron, JavaScript, and Node.js to gain a deeper understanding of Internet protocols and browser architecture. The project has garnered significant interest, with over 25,000 downloads on GitHub",
-      icon: peacock_logo,
-      image: peacock,
-    },
-  ];
-
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
@@ -248,9 +208,9 @@ const App = () => {
           >
             <motion.h1
               variants={fadeInUpVariants}
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 font-display tracking-tight"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-2 font-display tracking-tight leading-tight"
             >
-              Developer,{" "}
+              Full-stack developer,{" "}
               <span className="animate-gradient bg-gradient-to-r from-primary via-primary-light to-primary-dark bg-[length:200%_200%] bg-clip-text text-transparent playfair-display-italic">
                 designer
               </span>{" "}
@@ -329,7 +289,7 @@ const App = () => {
         <Carousel onImageHover={handleCarouselImageHover} />
       </div>
 
-      <div className="container-narrow">
+      <div className="container-narrow" id="about">
         <AnimatedSection variants={fadeInUpVariants}>
           <div className="mt-20 mb-12">
             <motion.h2
@@ -353,7 +313,7 @@ const App = () => {
           <h2 className="text-4xl sm:text-5xl font-bold text-center mb-8">
             Projects
           </h2>
-          <StickyScroll content={projects} />
+          <StickyScroll />
         </section>
       </div>
 

@@ -43,8 +43,8 @@
       ),
       radial-gradient(at 80% 0%, hsla(170, 100%, 88%, 1) 0px, transparent 50%),
       radial-gradient(at 0% 50%, hsla(170, 100%, 76%, 1) 0px, transparent 50%),
-      radial-gradient(at 80% 50%, hsla(170, 100%, 88%, 1) 0px, transparent 50%),
-      radial-gradient(at 0% 100%, hsla(170, 100%, 82%, 1) 0px, transparent 50%),
+      radial-gradient(at 80% 50%, rgb(227, 255, 250) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgb(248, 255, 254) 0px, transparent 50%),
       radial-gradient(at 80% 100%, hsla(170, 100%, 76%, 1) 0px, transparent 50%),
       radial-gradient(at 0% 0%, hsla(170, 100%, 96%, 1) 0px, transparent 50%);
     mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
@@ -198,4 +198,12 @@ img {
 .playfair-display-italic {
   font-family: 'Playfair Display', serif;
   font-style: italic;
+}
+
+.box-grid {
+  border-color: rgb(0 0 0 / 0.02);
+}
+
+.dark .box-grid {
+  border-color: rgb(255 255 255 / 0.05);
 }

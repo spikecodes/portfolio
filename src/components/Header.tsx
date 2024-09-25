@@ -51,7 +51,7 @@ const Header = React.forwardRef<HTMLDivElement, HeaderProps>(({ isDark, toggleTh
           className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-2 font-display tracking-tight leading-tight"
         >
           Full-stack developer,{" "}
-          <span className="animate-gradient bg-gradient-to-r from-primary-light to-primary-dark bg-[length:200%_200%] bg-clip-text text-transparent playfair-display-italic">
+          <span className="dark:animate-gradient dark:bg-gradient-to-r dark:from-primary-light dark:to-primary-dark bg-primary-dark bg-[length:200%_200%] bg-clip-text text-transparent playfair-display-italic">
             designer
           </span>{" "}
           and

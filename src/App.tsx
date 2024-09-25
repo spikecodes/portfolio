@@ -79,6 +79,7 @@ const App = () => {
   const [hoverText, setHoverText] = useState("");
   const [isOverInteractable, setIsOverInteractable] = useState(false);
   const [isHoveringImage, setIsHoveringImage] = useState(false);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
 
   useEffect(() => {
     if (isDark) {
@@ -96,6 +97,17 @@ const App = () => {
       }
     });
   }, [scrollY]);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsLargeScreen(window.innerWidth >= 768);
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   useEffect(() => {
     const moveCursor = (e: MouseEvent) => {
@@ -159,7 +171,7 @@ const App = () => {
 
   return (
     <div
-      className={`min-h-screen bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-300 cursor-none`}
+      className={`pb-10 min-h-screen bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-300 ${isLargeScreen ? 'cursor-none' : ''}`}
     >
       <Navbar isScrolled={isScrolled} />
 
@@ -192,44 +204,46 @@ const App = () => {
         <Footer />
       </div>
 
-      <motion.div
-        className={`custom-cursor ${
-          isDark || isHoveringImage ? "dark-cursor" : ""
-        } ${isHovering ? "hovering" : ""} ${
-          isOverInteractable ? "over-interactable" : ""
-        } ${isHoveringImage ? "image-hover" : ""}`}
-        style={{
-          left: cursorX,
-          top: cursorY,
-        }}
-        animate={{
-          scale: isPressed ? 0.8 : 1,
-          backgroundColor: isPressed
-            ? isDark || isHoveringImage
-              ? "var(--primary)"
-              : "var(--text-light)"
-            : "transparent",
-          borderColor:
-            isDark || isHoveringImage ? "var(--primary)" : "var(--text-light)",
-          borderWidth: isOverInteractable ? "3px" : isHovering ? "3px" : "2px",
-          borderStyle: "solid",
-        }}
-        transition={{ duration: 0.1 }}
-      >
-        {isHovering && (
-          <motion.div
-            className={`cursor-text ${isHoveringImage ? "image-hover" : ""}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            style={{
-              color: isDark || isHoveringImage ? "white" : "black",
-            }}
-          >
-            {createCircularText(hoverText)}
-          </motion.div>
-        )}
-      </motion.div>
+      {isLargeScreen && (
+        <motion.div
+          className={`custom-cursor ${
+            isDark || isHoveringImage ? "dark-cursor" : ""
+          } ${isHovering ? "hovering" : ""} ${
+            isOverInteractable ? "over-interactable" : ""
+          } ${isHoveringImage ? "image-hover" : ""}`}
+          style={{
+            left: cursorX,
+            top: cursorY,
+          }}
+          animate={{
+            scale: isPressed ? 0.8 : 1,
+            backgroundColor: isPressed
+              ? isDark || isHoveringImage
+                ? "var(--primary)"
+                : "var(--text-light)"
+              : "transparent",
+            borderColor:
+              isDark || isHoveringImage ? "var(--primary)" : "var(--text-light)",
+            borderWidth: isOverInteractable ? "3px" : isHovering ? "3px" : "2px",
+            borderStyle: "solid",
+          }}
+          transition={{ duration: 0.1 }}
+        >
+          {isHovering && (
+            <motion.div
+              className={`cursor-text ${isHoveringImage ? "image-hover" : ""}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              style={{
+                color: isDark || isHoveringImage ? "white" : "black",
+              }}
+            >
+              {createCircularText(hoverText)}
+            </motion.div>
+          )}
+        </motion.div>
+      )}
     </div>
   );
 };

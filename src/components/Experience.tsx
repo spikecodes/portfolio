@@ -39,7 +39,7 @@ const Experience: React.FC = () => {
         ].map((job, index, array) => (
           <div key={index}>
             <div className="space-y-4">
-              <div className="flex justify-between items-baseline">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
                 <div>
                   <h3 className="text-2xl sm:text-3xl font-semibold">
                     {job.title}
@@ -48,7 +48,7 @@ const Experience: React.FC = () => {
                     {job.company}
                   </p>
                 </div>
-                <p className="text-base sm:text-lg text-gray-500 dark:text-gray-400">
+                <p className="text-base sm:text-lg text-gray-500 dark:text-gray-400 mt-2 sm:mt-0">
                   {job.date}
                 </p>
               </div>

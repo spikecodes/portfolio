@@ -27,7 +27,7 @@ const projects: ContentType[] = [
     title: "Stotra: Multiplayer Stock Trade Simulator",
     date: "Jul 2023 – Aug 2023",
     description:
-      "Developed a real-time stock trading simulator utilizing React with TypeScript for the frontend and Node.js/Express for the backend. The project included constructing an OpenAPI 3.0-compliant API with JWT authentication to interface with MongoDB and third-party APIs. AWS services were leveraged to host the backend (EC2, CloudFormation, Cloudfront) and deploy the frontend on AWS Amplify, demonstrating proficiency in full-stack development and cloud deployment.",
+      "Developed a real-time stock trading simulator utilizing React with TypeScript for the frontend and Node.js/Express for the backend. AWS services were leveraged to host the backend (EC2, CloudFormation, Cloudfront) and deploy the frontend on AWS Amplify, demonstrating proficiency in full-stack development and cloud deployment.",
     icon: stotra_logo,
     image: stotra,
     url: "https://github.com/spikecodes/stotra",

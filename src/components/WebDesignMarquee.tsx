@@ -34,8 +34,8 @@ const WebDesignMarquee: React.FC = () => {
 
   return (
     <div className="py-20 overflow-hidden w-full relative">
-      <h2 className="text-4xl sm:text-5xl font-bold text-center mb-4">Freelance Web Design</h2>
-      <div className="flex justify-center mb-12">
+      <h2 className="text-3xl sm:text-5xl font-bold text-center mb-4 px-4 sm:px-0">Freelance Web Design</h2>
+      <div className="flex justify-center mb-12 px-4 sm:px-0">
         <div className="bg-primary bg-opacity-20 text-text-light dark:text-text-dark rounded-full px-4 py-2 flex items-center">
           <Info size={20} className="mr-2" />
           <span>Note: I'm no longer taking on new freelance projects.</span>

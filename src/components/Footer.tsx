@@ -4,8 +4,8 @@ import { Mail, MapPin, ExternalLink } from "lucide-react";
 const Footer: React.FC = () => {
   return (
     <footer className="py-16 border-t border-gray-200 dark:border-gray-700">
-      <div className="flex flex-col sm:flex-row justify-center items-center sm:space-x-20">
-        <div className="mb-6 sm:mb-0 text-center sm:text-left">
+      <div className="flex flex-col sm:flex-row justify-center sm:items-center sm:space-x-20">
+        <div className="mb-6 sm:mb-0 text-left">
           <h3 className="text-2xl font-bold mb-3">Spike</h3>
           <div className="flex items-center mb-2 text-lg">
             <Mail className="mr-2 text-primary" size={20} />
@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
             <span>Irvine, CA</span>
           </div>
         </div>
-        <div className="text-center sm:text-left">
+        <div className="text-left">
           <h3 className="text-xl font-semibold mb-3">Made with</h3>
           <ul className="space-y-2 text-lg">
             {[
@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
                   href={tech.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center sm:justify-start hover:underline"
+                  className="flex items-center hover:underline"
                 >
                   {tech.name}
                   <ExternalLink className="ml-1" size={16} />

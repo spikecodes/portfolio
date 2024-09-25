@@ -7,6 +7,7 @@ import {
   useMotionValue,
   // AnimatePresence,
 } from "framer-motion";
+import Lenis from '@studio-freight/lenis'
 import { Navbar } from "./components/ui/navbar";
 // import { ThemeToggle } from "./components/ui/theme-toggle";
 // import {
@@ -87,6 +88,21 @@ const App = () => {
   const [isOverInteractable, setIsOverInteractable] = useState(false);
   const [isHoveringImage, setIsHoveringImage] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  useEffect(() => {
+    const lenis = new Lenis()
+
+    function raf(time: number) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+
+    return () => {
+      lenis.destroy()
+    }
+  }, [])
 
   useEffect(() => {
     if (isDark) {

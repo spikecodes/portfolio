@@ -7,7 +7,7 @@ import {
   useMotionValue,
   // AnimatePresence,
 } from "framer-motion";
-import Lenis from '@studio-freight/lenis'
+import Lenis from "@studio-freight/lenis";
 import { Navbar } from "./components/ui/navbar";
 // import { ThemeToggle } from "./components/ui/theme-toggle";
 // import {
@@ -71,11 +71,11 @@ import Footer from "./components/Footer";
 const App = () => {
   const [isDark, setIsDark] = useState(() => {
     // Check system preference and localStorage
-    const savedTheme = localStorage.getItem('theme');
+    const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
-      return savedTheme === 'dark';
+      return savedTheme === "dark";
     }
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
   const [isScrolled, setIsScrolled] = useState(false);
   const headerRef = useRef(null);
@@ -90,27 +90,27 @@ const App = () => {
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
   useEffect(() => {
-    const lenis = new Lenis()
+    const lenis = new Lenis();
 
     function raf(time: number) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
+      lenis.raf(time);
+      requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf)
+    requestAnimationFrame(raf);
 
     return () => {
-      lenis.destroy()
-    }
-  }, [])
+      lenis.destroy();
+    };
+  }, []);
 
   useEffect(() => {
     if (isDark) {
       document.documentElement.classList.add("dark");
-      localStorage.setItem('theme', 'dark');
+      localStorage.setItem("theme", "dark");
     } else {
       document.documentElement.classList.remove("dark");
-      localStorage.setItem('theme', 'light');
+      localStorage.setItem("theme", "light");
     }
   }, [isDark]);
 
@@ -129,9 +129,9 @@ const App = () => {
     };
 
     checkScreenSize();
-    window.addEventListener('resize', checkScreenSize);
+    window.addEventListener("resize", checkScreenSize);
 
-    return () => window.removeEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
   useEffect(() => {
@@ -198,7 +198,9 @@ const App = () => {
 
   return (
     <div
-      className={`pb-10 min-h-screen bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-300 ${isLargeScreen ? 'cursor-none' : ''}`}
+      className={`pb-10 min-h-screen bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-300 ${
+        isLargeScreen ? "cursor-none" : ""
+      }`}
     >
       <Navbar isScrolled={isScrolled} />
 
@@ -208,7 +210,7 @@ const App = () => {
 
       <div className="container-narrow relative">
         <Header ref={headerRef} isDark={isDark} toggleTheme={toggleTheme} />
-        
+
         <div className="container-wide relative w-full overflow-hidden">
           <Carousel onImageHover={handleCarouselImageHover} />
         </div>
@@ -216,7 +218,7 @@ const App = () => {
         <AboutMe />
 
         <section id="projects" className="w-full pt-12 sm:pt-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-center">
+          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-8 md:mb-0">
             Projects
           </h2>
           <StickyScroll />
@@ -250,8 +252,14 @@ const App = () => {
                 : "var(--text-light)"
               : "transparent",
             borderColor:
-              isDark || isHoveringImage ? "var(--primary)" : "var(--text-light)",
-            borderWidth: isOverInteractable ? "3px" : isHovering ? "3px" : "2px",
+              isDark || isHoveringImage
+                ? "var(--primary)"
+                : "var(--text-light)",
+            borderWidth: isOverInteractable
+              ? "3px"
+              : isHovering
+              ? "3px"
+              : "2px",
             borderStyle: "solid",
           }}
           transition={{ duration: 0.1 }}

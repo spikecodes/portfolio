@@ -90,18 +90,22 @@ const App = () => {
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
   useEffect(() => {
-    const lenis = new Lenis();
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-    function raf(time: number) {
-      lenis.raf(time);
+    if (!isMobile) {
+      const lenis = new Lenis();
+
+      function raf(time: number) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
       requestAnimationFrame(raf);
+
+      return () => {
+        lenis.destroy();
+      };
     }
-
-    requestAnimationFrame(raf);
-
-    return () => {
-      lenis.destroy();
-    };
   }, []);
 
   useEffect(() => {

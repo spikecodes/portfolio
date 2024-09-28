@@ -66,6 +66,12 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
 export const Boxes = React.memo(BoxesCore);
 
 export function BackgroundBoxesDemo() {
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  if (isMobile) {
+    return null; // Don't render anything on mobile
+  }
+
   return (
     <div className="h-full relative w-full overflow-hidden flex flex-col items-center justify-center">
       <div className="absolute inset-0 w-full h-full z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />

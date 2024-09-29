@@ -1,9 +1,12 @@
 import React from "react";
+import portal from "../assets/experience/portal.png";
+import map from "../assets/experience/map.png";
+import freelance from "../assets/experience/freelance.png";
 
 const Experience: React.FC = () => {
   return (
-    <section className="w-full py-12 sm:py-16 bg-background-light dark:bg-background-dark" id="experience">
-      <h2 className="text-4xl sm:text-5xl font-bold mb-12">Experience</h2>
+    <section className="container mx-auto py-10 px-4">
+      <h2 className="text-3xl font-bold mb-8 text-center">Experience</h2>
       <div className="space-y-8">
         {[
           {
@@ -11,11 +14,12 @@ const Experience: React.FC = () => {
             company: "Portal AI",
             date: "Dec 2023 – Present",
             responsibilities: [
-              "Shipped 80+ features to a venture-backed startup's AI web browser and LLM interface serving 30,000 users/mo",
-              "Built a high-performance vector database in Rust with SQL query support and cloud syncing with Postgres server",
+              "Shipped 80+ features to a venture-backed startup's AI web browser serving 30,000 users/mo",
+              "Built a high-performance vector database in Rust with SQL query support and cloud syncing with Postgres",
               "Launched a conversational voice AI in Python with < 600ms latency, web agent capabilities, and RAG",
               "Worked closely with fast-paced teams to develop Electron-based browser in Node, TypeScript, React, and Tailwind",
             ],
+            icon: portal,
           },
           {
             title: "Freelance Web Designer and Developer",
@@ -23,9 +27,10 @@ const Experience: React.FC = () => {
             date: "Nov 2021 – Dec 2023",
             responsibilities: [
               "Created high-converting websites for businesses and public figures using Webflow, Figma, and Framer",
-              "Organically increased web traffic by 2-3x for more than 90% of clients through maximizing SEO and page speed",
+              "Organically increased web traffic by 2-3x for >90% of clients through maximizing SEO and page speed",
               "Designed stunning landing pages and 0→1 web branding featured in 32 Behance and Dribbble collections",
             ],
+            icon: freelance,
           },
           {
             title: "Frontend and Webmaster Intern",
@@ -35,24 +40,43 @@ const Experience: React.FC = () => {
               "Designed and maintained website, Shopify store, and JotForm assessment form for private gym",
               "Architected automation pipelines saving 10 hours/week on client processing using webhooks and Zapier",
             ],
+            icon: map,
           },
         ].map((job, index, array) => (
-          <div key={index}>
-            <div className="space-y-4">
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
-                <div>
-                  <h3 className="text-2xl sm:text-3xl font-semibold">
-                    {job.title}
-                  </h3>
-                  <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 mt-1">
-                    {job.company}
-                  </p>
+          <div key={index} className="flex items-start">
+            <div className="mr-4 flex-shrink-0">
+              {job.company === "Maximize Athletic Performance" ? (
+                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center">
+                  <img
+                    src={job.icon}
+                    alt={`${job.company} icon`}
+                    width={40}
+                    height={40}
+                    className="rounded-full invert"
+                  />
                 </div>
-                <p className="text-base sm:text-lg text-gray-500 dark:text-gray-400 mt-2 sm:mt-0">
+              ) : (
+                <img
+                  src={job.icon}
+                  alt={`${job.company} icon`}
+                  width={48}
+                  height={48}
+                  className="rounded-full"
+                />
+              )}
+            </div>
+            <div className="flex-grow">
+              <div className="flex justify-between items-start">
+                <div>
+                  <h3 className="text-xl font-semibold">{job.title}</h3>
+                  <p className="text-gray-600">{job.company}</p>
+                </div>
+                <p className="text-md text-gray-500 hidden sm:block">
                   {job.date}
                 </p>
               </div>
-              <ul className="list-disc list-inside space-y-2">
+              <p className="text-sm text-gray-500 sm:hidden mt-1">{job.date}</p>
+              <ul className="list-disc list-inside mt-2">
                 {job.responsibilities.map((resp, i) => (
                   <li key={i} className="text-base sm:text-lg">
                     {resp}

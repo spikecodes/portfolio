@@ -222,7 +222,7 @@ const App = () => {
         <AboutMe />
 
         <section id="projects" className="w-full pt-12 sm:pt-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-8 md:mb-0">
+          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-8 md:mb-12">
             Projects
           </h2>
           <StickyScroll />

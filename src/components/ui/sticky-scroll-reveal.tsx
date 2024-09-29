@@ -1,6 +1,12 @@
 "use client";
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useInView,
+  MotionValue,
+} from "framer-motion";
 import { ExternalLink } from "lucide-react";
 
 // Project logos
@@ -57,7 +63,7 @@ const ProjectCard = ({
   opacity,
 }: {
   item: ContentType;
-  opacity: number;
+  opacity: MotionValue<number>;
 }) => {
   const cardRef = useRef(null);
   const isInView = useInView(cardRef, { margin: "-40% 0px -40% 0px" });

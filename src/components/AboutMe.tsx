@@ -21,13 +21,10 @@ const AboutMe: React.FC = () => {
         >
           About Me
         </motion.h2>
-        <motion.p
-          variants={fadeInUpVariants}
-          className="text-base sm:text-lg"
-        >
+        <motion.p variants={fadeInUpVariants} className="text-lg sm:text-xl">
           I'm a Computer Science student at UC Irvine with a passion for
-          full-stack development and AI. I love badminton, hackathons, and
-          building innovative consumer products.
+          full-stack development and AI. I love AI, hackathons, and building
+          innovative consumer products.
         </motion.p>
       </div>
     </motion.section>

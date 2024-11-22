@@ -55,6 +55,14 @@ const Experience: React.FC = () => {
                     className="rounded-full invert"
                   />
                 </div>
+              ) : job.company === "Portal AI" ? (
+                <img
+                  src={job.icon}
+                  alt={`${job.company} icon`}
+                  width={48}
+                  height={48}
+                  className="rounded-full bg-black"
+                />
               ) : (
                 <img
                   src={job.icon}

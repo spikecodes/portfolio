@@ -23,7 +23,7 @@ const AboutMe: React.FC = () => {
         </motion.h2>
         <motion.p variants={fadeInUpVariants} className="text-lg sm:text-xl">
           I'm a Computer Science student at UC Irvine with a passion for
-          full-stack development and AI. I love AI, hackathons, and building
+          full-stack development and AI. I love startups, hackathons, and building
           innovative consumer products.
         </motion.p>
       </div>

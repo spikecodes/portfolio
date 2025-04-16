@@ -38,15 +38,15 @@
     background-color: hsla(0, 0%, 100%, 1);
     background-image: radial-gradient(
         at 40% 20%,
-        hsla(170, 100%, 96%, 1) 0px,
+        hsla(170, 100%, 94%, 1) 0px,
         transparent 50%
       ),
-      radial-gradient(at 80% 0%, hsla(170, 100%, 88%, 1) 0px, transparent 50%),
-      radial-gradient(at 0% 50%, hsla(170, 100%, 76%, 1) 0px, transparent 50%),
-      radial-gradient(at 80% 50%, rgb(227, 255, 250) 0px, transparent 50%),
-      radial-gradient(at 0% 100%, rgb(248, 255, 254) 0px, transparent 50%),
-      radial-gradient(at 80% 100%, hsla(170, 100%, 76%, 1) 0px, transparent 50%),
-      radial-gradient(at 0% 0%, hsla(170, 100%, 96%, 1) 0px, transparent 50%);
+      radial-gradient(at 80% 0%, hsla(170, 100%, 84%, 1) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, hsla(170, 100%, 72%, 1) 0px, transparent 50%),
+      radial-gradient(at 80% 50%, hsla(170, 100%, 90%, 1) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsla(170, 100%, 96%, 1) 0px, transparent 50%),
+      radial-gradient(at 80% 100%, hsla(170, 100%, 70%, 1) 0px, transparent 50%),
+      radial-gradient(at 0% 0%, hsla(170, 100%, 92%, 1) 0px, transparent 50%);
     mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
   }
@@ -130,13 +130,15 @@
   }
 
   .custom-cursor {
-    pointer-events: none;
+    pointer-events: none !important;
     position: fixed;
     width: 32px;
     height: 32px;
     border-radius: 50%;
     z-index: 9999;
-    transition: all 0.1s ease-out;
+    will-change: transform, width, height; /* For better performance */
+    transition: background-color 0.1s ease-out; /* Keep only background color transition */
+    transform: translate(-50%, -50%); /* Center the cursor */
   }
 
   .dark-cursor,

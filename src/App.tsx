@@ -93,7 +93,15 @@ const App = () => {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     if (!isMobile) {
-      const lenis = new Lenis();
+      // Configure Lenis with faster scrolling settings
+      const lenis = new Lenis({
+        duration: 0.8, // Reduced from default (1.2)
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Faster easing
+        orientation: "vertical",
+        smoothWheel: true,
+        wheelMultiplier: 1.2, // Increased for faster wheel scrolling
+        touchMultiplier: 1.5, // Increased for faster touch scrolling
+      });
 
       function raf(time: number) {
         lenis.raf(time);
@@ -140,8 +148,8 @@ const App = () => {
 
   useEffect(() => {
     const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX - 16);
-      cursorY.set(e.clientY - 16);
+      cursorX.set(e.clientX);
+      cursorY.set(e.clientY);
     };
 
     const handleMouseDown = () => setIsPressed(true);
@@ -266,7 +274,7 @@ const App = () => {
               : "2px",
             borderStyle: "solid",
           }}
-          transition={{ duration: 0.1 }}
+          transition={{ duration: 0.03 }} // Much faster response time
         >
           {isHovering && (
             <motion.div

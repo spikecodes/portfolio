@@ -43,6 +43,33 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  const scrollToSection = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
+
+    if (href === "#") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+      return;
+    }
+
+    const targetSection = document.querySelector(href);
+    if (targetSection) {
+      targetSection.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+
+    // Close mobile menu if open
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+    }
+  };
+
   return (
     <>
       <motion.nav
@@ -54,9 +81,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
       >
         {/* Desktop Menu */}
         <div
-          className={`hidden sm:block bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-80 backdrop-blur-md rounded-full ${
-            isScrolled ? "shadow-md" : ""
-          } px-6 py-3`}
+          className={`hidden sm:block bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-80 backdrop-blur-md rounded-full shadow-lg border border-white/20 dark:border-black/20 px-6 py-3`}
         >
           <ul
             className="flex items-center justify-center space-x-2 relative"
@@ -68,7 +93,12 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
             }}
           >
             {navItems.map((item) => (
-              <Tab key={item.name} setPosition={setPosition} href={item.href}>
+              <Tab
+                key={item.name}
+                setPosition={setPosition}
+                href={item.href}
+                onClick={(e) => scrollToSection(e, item.href)}
+              >
                 {item.name}
               </Tab>
             ))}
@@ -121,19 +151,19 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
                   <a
                     href={item.href}
                     className="block px-6 py-3 text-lg font-medium transition-colors text-gray-900 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={(e) => scrollToSection(e, item.href)}
                   >
                     {item.name}
                   </a>
                 </li>
               ))}
               <li className="px-6 pt-2 pb-4">
-                <button
-                  className="w-full px-4 py-3 text-lg font-medium bg-primary text-text-light hover:bg-primary-dark transition-colors rounded-full"
-                  onClick={() => setIsMenuOpen(false)}
+                <a
+                  href="mailto:career@spike.codes"
+                  className="block w-full px-4 py-3 text-lg font-medium bg-primary text-text-light hover:bg-primary-dark transition-colors rounded-full text-center"
                 >
                   Contact
-                </button>
+                </a>
               </li>
             </ul>
           </motion.div>
@@ -146,15 +176,20 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
 // Add these interfaces
 interface TabProps {
   children: React.ReactNode;
-  setPosition: (position: { left: number; width: number; opacity: number }) => void;
+  setPosition: (position: {
+    left: number;
+    width: number;
+    opacity: number;
+  }) => void;
   href: string;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
 interface CursorProps {
   position: { left: number; width: number; opacity: number };
 }
 
-const Tab: React.FC<TabProps> = ({ children, setPosition, href }) => {
+const Tab: React.FC<TabProps> = ({ children, setPosition, href, onClick }) => {
   const ref = useRef<HTMLLIElement>(null);
 
   return (
@@ -173,7 +208,8 @@ const Tab: React.FC<TabProps> = ({ children, setPosition, href }) => {
     >
       <a
         href={href}
-        className="block px-4 py-2 rounded-full text-md font-medium transition-colors text-gray-900 dark:text-gray-300 hover:text-black dark:hover:text-white cursor-none"
+        onClick={onClick}
+        className="block px-4 py-2 rounded-full text-md font-medium transition-colors text-gray-900 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-primary/10 dark:hover:bg-primary/20 cursor-none"
       >
         {children}
       </a>
@@ -187,7 +223,7 @@ const Cursor: React.FC<CursorProps> = ({ position }) => {
       animate={{
         ...position,
       }}
-      className="absolute z-0 h-full rounded-full bg-gray-200 dark:bg-gray-700"
+      className="absolute z-0 h-full rounded-full bg-primary/10 dark:bg-primary/20"
     />
   );
 };

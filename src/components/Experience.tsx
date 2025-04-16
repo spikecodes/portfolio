@@ -2,43 +2,67 @@ import React from "react";
 import portal from "../assets/experience/portal.png";
 import map from "../assets/experience/map.png";
 import freelance from "../assets/experience/freelance.png";
+import ramp from "../assets/experience/ramp.jpg";
+import dispatchai from "../assets/experience/dispatchai.jpg";
+// TODO: Import ramp and dispatch logos
+// import ramp from "../assets/experience/ramp.png";
+// import dispatch from "../assets/experience/dispatch.png";
 
 const Experience: React.FC = () => {
   return (
-    <section className="container mx-auto py-10 px-4">
+    <section id="experience" className="container mx-auto py-10 px-4">
       <h2 className="text-3xl font-bold mb-8 text-center">Experience</h2>
       <div className="space-y-8">
         {[
           {
-            title: "Full Stack Software Intern",
-            company: "Portal AI",
-            date: "Dec 2023 – Present",
+            title: "Incoming SWE Intern, Backend",
+            company: "Ramp",
+            date: "Oct 2024 – Present",
+            responsibilities: ["Summer 2025"],
+            icon: ramp,
+          },
+          {
+            title: "CEO / Co-Founder",
+            company: "Dispatch AI",
+            date: "Jun 2024 – Dec 2024",
             responsibilities: [
-              "Shipped 80+ features to a venture-backed startup's AI web browser serving 30,000 users/mo",
-              "Built a high-performance vector database in Rust with SQL query support and cloud syncing with Postgres",
+              "AI 911 operator using empathy-driven emergency response to empower dispatch centers",
+              "Grants from OpenAI, Intel, Skydeck, Mistral AI and Academic Catalyst",
+              "$50,000 Grand Prize Winners at the 2024 UC Berkeley AI Hackathon, out of over 1500 participants",
+              "Accepted into Berkeley Skydeck's Pad-13 Program (1% acceptance rate, Forbes #2 Best University Accelerator)",
+            ],
+            icon: dispatchai,
+          },
+          {
+            title: "Software Engineer Intern",
+            company: "Portal",
+            date: "Dec 2023 – Sep 2024",
+            responsibilities: [
+              "Shipped 80+ features to a venture-backed startup's AI web browser and LLM interface serving 30,000 users/mo",
+              "Built a high-performance vector database in Rust with SQL query support and cloud syncing with Postgres server",
               "Launched a conversational voice AI in Python with < 600ms latency, web agent capabilities, and RAG",
               "Worked closely with fast-paced teams to develop Electron-based browser in Node, TypeScript, React, and Tailwind",
             ],
             icon: portal,
           },
           {
-            title: "Freelance Web Designer and Developer",
-            company: "Self-employed",
+            title: "Freelance Web Developer",
+            company: "Spike Designs",
             date: "Nov 2021 – Dec 2023",
             responsibilities: [
-              "Created high-converting websites for businesses and public figures using Webflow, Figma, and Framer",
-              "Organically increased web traffic by 2-3x for >90% of clients through maximizing SEO and page speed",
-              "Designed stunning landing pages and 0→1 web branding featured in 32 Behance and Dribbble collections",
+              "Building 10x-converting websites and 0→1 branding for businesses and public figures",
+              "Driving actionable results with stunning UI/UX featured in over 30 Adobe Behance collections",
             ],
             icon: freelance,
           },
           {
-            title: "Frontend and Webmaster Intern",
+            title: "Webmaster and IT Administrator",
             company: "Maximize Athletic Performance",
-            date: "Mar 2023 – Nov 2023",
+            date: "Mar 2023 – Sep 2023",
             responsibilities: [
-              "Designed and maintained website, Shopify store, and JotForm assessment form for private gym",
-              "Architected automation pipelines saving 10 hours/week on client processing using webhooks and Zapier",
+              "Designed Wordpress website, Shopify store, and JotForm assessment form",
+              "Created and ran client acquisition strategy using social media, SMS (via Twilio), and email marketing",
+              "Architected automation pipelines to save 10 hours/week on client processing using webhooks and Zapier",
             ],
             icon: map,
           },
@@ -55,7 +79,7 @@ const Experience: React.FC = () => {
                     className="rounded-full invert"
                   />
                 </div>
-              ) : job.company === "Portal AI" ? (
+              ) : job.company === "Portal" ? (
                 <img
                   src={job.icon}
                   alt={`${job.company} icon`}

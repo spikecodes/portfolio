@@ -13,15 +13,15 @@ const CallToAction: React.FC = () => {
       variants={fadeInUpVariants}
       initial="hidden"
       animate="visible"
-      className="pt-20"
+      className="pt-10"
     >
-      <div className="cta-mesh-gradient rounded-3xl p-12 py-20 text-center text-black dark:text-white">
+      <div className="cta-mesh-gradient rounded-3xl p-12 py-14 text-center text-black dark:text-white">
         <h2 className="text-3xl sm:text-4xl font-bold mb-4">
           Let's create something amazing together
         </h2>
-        <p className="text-lg mb-8">
-          I'm always open to new opportunities and collaborations. Feel free to
-          reach out!
+        <p className="text-lg mb-6">
+          I'm open to new opportunities and collaborations. Feel free to reach
+          out!
         </p>
         <motion.a
           href="mailto:career@spike.codes"

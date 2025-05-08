@@ -2,11 +2,7 @@ import React from "react";
 import portal from "../assets/experience/portal.png";
 import map from "../assets/experience/map.png";
 import freelance from "../assets/experience/freelance.png";
-import ramp from "../assets/experience/ramp.jpg";
 import dispatchai from "../assets/experience/dispatchai.jpg";
-// TODO: Import ramp and dispatch logos
-// import ramp from "../assets/experience/ramp.png";
-// import dispatch from "../assets/experience/dispatch.png";
 
 const Experience: React.FC = () => {
   return (
@@ -14,13 +10,6 @@ const Experience: React.FC = () => {
       <h2 className="text-3xl font-bold mb-8 text-center">Experience</h2>
       <div className="space-y-8">
         {[
-          {
-            title: "Incoming SWE Intern, Backend",
-            company: "Ramp",
-            date: "Oct 2024 – Present",
-            responsibilities: ["Summer 2025"],
-            icon: ramp,
-          },
           {
             title: "CEO / Co-Founder",
             company: "Dispatch AI",

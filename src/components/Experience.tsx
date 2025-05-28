@@ -3,6 +3,7 @@ import portal from "../assets/experience/portal.png";
 import map from "../assets/experience/map.png";
 import freelance from "../assets/experience/freelance.png";
 import dispatchai from "../assets/experience/dispatchai.jpg";
+import spacex from "../assets/experience/spacex.jpg";
 
 const Experience: React.FC = () => {
   return (
@@ -10,6 +11,16 @@ const Experience: React.FC = () => {
       <h2 className="text-3xl font-bold mb-8 text-center">Experience</h2>
       <div className="space-y-8">
         {[
+          {
+            title: "Full Stack Software Engineer",
+            company: "SpaceX",
+            date: "July 2025 – Present",
+            responsibilities: [
+              "Incoming on Starlink Consumer Platform, Growth and Payments team",
+            ],
+            icon: spacex,
+            location: "Hawthorne, California, United States · On-site",
+          },
           {
             title: "CEO / Co-Founder",
             company: "Dispatch AI",
@@ -91,6 +102,9 @@ const Experience: React.FC = () => {
                 <div>
                   <h3 className="text-xl font-semibold">{job.title}</h3>
                   <p className="text-gray-600">{job.company}</p>
+                  {job.location && (
+                    <p className="text-sm text-gray-500 mt-1">{job.location}</p>
+                  )}
                 </div>
                 <p className="text-md text-gray-500 hidden sm:block">
                   {job.date}

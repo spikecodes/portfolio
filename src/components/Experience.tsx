@@ -16,7 +16,7 @@ const Experience: React.FC = () => {
             company: "SpaceX",
             date: "July 2025 – Present",
             responsibilities: [
-              "Incoming on Starlink Consumer Platform, Growth and Payments team",
+              "Starlink Consumer Platform, Growth and Payments team",
             ],
             icon: spacex,
             location: "Hawthorne, California, United States · On-site",
